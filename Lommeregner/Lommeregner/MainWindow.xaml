@@ -18,5 +18,7 @@
         <Button x:Name="btn8" Content="8" HorizontalAlignment="Left" Margin="65,225,0,0" VerticalAlignment="Top" Width="50" Height="50" Click="btn8_Click"/>
         <Button x:Name="btn9" Content="9" HorizontalAlignment="Left" Margin="120,225,0,0" VerticalAlignment="Top" Width="50" Height="50" Click="btn9_Click"/>
         <Button x:Name="btn0" Content="0" HorizontalAlignment="Left" Margin="65,280,0,0" VerticalAlignment="Top" Width="50" Height="50" Click="btn0_Click"/>
+        <Button x:Name="btnEquals" Content="=" HorizontalAlignment="Left" Margin="120,280,0,0" VerticalAlignment="Top" Width="50" Height="50" Click="btnEquals_Click"/>
+        <Button x:Name="btnPlus" Content="+" HorizontalAlignment="Left" Margin="231,115,0,0" VerticalAlignment="Top" Width="50" Height="50" Click="btnPlus_Click"/>
     </Grid>
 </Window>
