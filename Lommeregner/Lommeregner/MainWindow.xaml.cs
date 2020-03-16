@@ -124,6 +124,8 @@ namespace Lommeregner
                 txtBox_Result.Text = result.ToString();
                 op.Clear();
                 nums.Clear();
+                textBoxString = String.Empty;
+                currentString = String.Empty;
                 result = 0;
             }
         }
@@ -137,9 +139,6 @@ namespace Lommeregner
 
         private bool OpSwitchCheck()
         {
-            //if (textBoxString == String.Empty)
-            //    return true;
-
             if (textBoxString[textBoxString.Length - 1] == '+' || textBoxString[textBoxString.Length - 1] == '-' ||
                 textBoxString[textBoxString.Length - 1] == '/' || textBoxString[textBoxString.Length - 1] == '*')
             {
@@ -205,6 +204,11 @@ namespace Lommeregner
                 AddToTextBox('*');
                 currentString = String.Empty;
             }
+        }
+
+        private void btnNegative_Click(object sender, RoutedEventArgs e)
+        {
+            createNum('-');
         }
     }
 }
