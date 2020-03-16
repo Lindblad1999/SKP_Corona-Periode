@@ -20,5 +20,8 @@
         <Button x:Name="btn0" Content="0" HorizontalAlignment="Left" Margin="65,280,0,0" VerticalAlignment="Top" Width="50" Height="50" Click="btn0_Click"/>
         <Button x:Name="btnEquals" Content="=" HorizontalAlignment="Left" Margin="120,280,0,0" VerticalAlignment="Top" Width="50" Height="50" Click="btnEquals_Click"/>
         <Button x:Name="btnPlus" Content="+" HorizontalAlignment="Left" Margin="231,115,0,0" VerticalAlignment="Top" Width="50" Height="50" Click="btnPlus_Click"/>
+        <Button x:Name="btnMinus" Content="-" HorizontalAlignment="Left" Margin="231,170,0,0" VerticalAlignment="Top" Width="50" Height="50" Click="btnMinus_Click"/>
+        <Button x:Name="btnMultiply" Content="*" HorizontalAlignment="Left" Margin="231,225,0,0" VerticalAlignment="Top" Width="50" Height="50" Click="btnMultiply_Click"/>
+        <Button x:Name="btnDivider" Content="/" HorizontalAlignment="Left" Margin="231,280,0,0" VerticalAlignment="Top" Width="50" Height="50" Click="btnDivider_Click"/>
     </Grid>
 </Window>

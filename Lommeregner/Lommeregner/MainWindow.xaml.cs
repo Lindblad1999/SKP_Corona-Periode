@@ -29,6 +29,8 @@ namespace Lommeregner
         public List<char> op = new List<char>();
         public string currentString = String.Empty;
         public double result = 0;
+        public int count = 0;
+        public string textBoxString = String.Empty;
 
         private void btn1_Click(object sender, RoutedEventArgs e)
         {
@@ -83,34 +85,81 @@ namespace Lommeregner
         private void createNum(char c)
         {
             currentString += c;
+            textBoxString += c;
+            txtBox_Result.Clear();
+            txtBox_Result.Text = textBoxString;
         }
 
         private void btnEquals_Click(object sender, RoutedEventArgs e)
         {
             nums.Add(Convert.ToDouble(currentString));
+            result = nums[count];
+            count++;
             for (int i = 0; i < op.Count; i++)
             {
                 switch (op[i])
                 {
                     case '+':
-                        result += nums[i];
+                        result += nums[count];
+                        count++;
                         break;
                     case '-':
-                        result -= nums[i];
+                        result -= nums[count];
+                        count++;
                         break;
                     case '*':
-                        result *= nums[i];
+                        result *= nums[count];
+                        count++;
                         break;
-
-
+                    case '/':
+                        result /= nums[count];
+                        count++;
+                        break;
                 }
             }
+
+            txtBox_Result.Text = result.ToString();
+            op.Clear();
+            nums.Clear();
+            result = 0;
+        }
+
+        private void AddToTextBox(char c)
+        {
+            textBoxString += c;
+            txtBox_Result.Clear();
+            txtBox_Result.Text = textBoxString;
         }
 
         private void btnPlus_Click(object sender, RoutedEventArgs e)
         {
             nums.Add(Convert.ToDouble(currentString));
             op.Add('+');
+            AddToTextBox('+');
+            currentString = String.Empty;
+        }
+
+        private void btnMinus_Click(object sender, RoutedEventArgs e)
+        {
+            nums.Add(Convert.ToDouble(currentString));
+            op.Add('-');
+            AddToTextBox('-');
+            currentString = String.Empty;
+        }
+
+        private void btnDivider_Click(object sender, RoutedEventArgs e)
+        {
+            nums.Add(Convert.ToDouble(currentString));
+            op.Add('/');
+            AddToTextBox('/');
+            currentString = String.Empty;
+        }
+
+        private void btnMultiply_Click(object sender, RoutedEventArgs e)
+        {
+            nums.Add(Convert.ToDouble(currentString));
+            op.Add('*');
+            AddToTextBox('*');
             currentString = String.Empty;
         }
     }
