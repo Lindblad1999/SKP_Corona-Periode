@@ -32,6 +32,7 @@ namespace Lommeregner
         public int count = 0;
         public string textBoxString = String.Empty;
 
+        #region numbers
         private void btn1_Click(object sender, RoutedEventArgs e)
         {
             createNum('1');
@@ -81,6 +82,7 @@ namespace Lommeregner
         {
             createNum('0');
         }
+        #endregion
 
         private void createNum(char c)
         {
