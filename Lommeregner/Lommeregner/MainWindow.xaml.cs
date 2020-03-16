@@ -131,36 +131,73 @@ namespace Lommeregner
             txtBox_Result.Text = textBoxString;
         }
 
+        private bool OpSwitchCheck()
+        {
+            if (textBoxString[textBoxString.Length - 1] == '+' || textBoxString[textBoxString.Length - 1] == '-' ||
+                textBoxString[textBoxString.Length - 1] == '/' || textBoxString[textBoxString.Length - 1] == '*')
+            {
+                op.RemoveAt(op.Count - 1);
+                textBoxString = textBoxString.Substring(0, textBoxString.Length - 1);
+                return true;
+            }
+            return false;
+        }
+
+        private bool FirstOpCheck()
+        {
+            if (currentString == String.Empty)
+            {
+                return true;
+            }
+            return false;
+        }
+
         private void btnPlus_Click(object sender, RoutedEventArgs e)
         {
-            nums.Add(Convert.ToDouble(currentString));
-            op.Add('+');
-            AddToTextBox('+');
-            currentString = String.Empty;
+            if (!FirstOpCheck())
+            {
+                if (!OpSwitchCheck())
+                    nums.Add(Convert.ToDouble(currentString));
+                op.Add('+');
+                AddToTextBox('+');
+                currentString = String.Empty;
+            }
         }
 
         private void btnMinus_Click(object sender, RoutedEventArgs e)
         {
-            nums.Add(Convert.ToDouble(currentString));
-            op.Add('-');
-            AddToTextBox('-');
-            currentString = String.Empty;
+            if (!FirstOpCheck())
+            {
+                if (!OpSwitchCheck())
+                    nums.Add(Convert.ToDouble(currentString));
+                op.Add('-');
+                AddToTextBox('-');
+                currentString = String.Empty;
+            }
         }
 
         private void btnDivider_Click(object sender, RoutedEventArgs e)
         {
-            nums.Add(Convert.ToDouble(currentString));
-            op.Add('/');
-            AddToTextBox('/');
-            currentString = String.Empty;
+            if (!FirstOpCheck())
+            {
+                if (!OpSwitchCheck())
+                    nums.Add(Convert.ToDouble(currentString));
+                op.Add('/');
+                AddToTextBox('/');
+                currentString = String.Empty;
+            }
         }
 
         private void btnMultiply_Click(object sender, RoutedEventArgs e)
         {
-            nums.Add(Convert.ToDouble(currentString));
-            op.Add('*');
-            AddToTextBox('*');
-            currentString = String.Empty;
+            if (!FirstOpCheck())
+            {
+                if (!OpSwitchCheck())
+                    nums.Add(Convert.ToDouble(currentString));
+                op.Add('*');
+                AddToTextBox('*');
+                currentString = String.Empty;
+            }
         }
     }
 }
