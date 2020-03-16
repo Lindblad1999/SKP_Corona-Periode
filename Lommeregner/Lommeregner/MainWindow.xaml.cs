@@ -92,36 +92,40 @@ namespace Lommeregner
 
         private void btnEquals_Click(object sender, RoutedEventArgs e)
         {
-            nums.Add(Convert.ToDouble(currentString));
-            result = nums[count];
-            count++;
-            for (int i = 0; i < op.Count; i++)
+            if (nums.Count != 0)
             {
-                switch (op[i])
+                if (!OpSwitchCheck())
+                    nums.Add(Convert.ToDouble(currentString));
+                result = nums[count];
+                count++;
+                for (int i = 0; i < op.Count; i++)
                 {
-                    case '+':
-                        result += nums[count];
-                        count++;
-                        break;
-                    case '-':
-                        result -= nums[count];
-                        count++;
-                        break;
-                    case '*':
-                        result *= nums[count];
-                        count++;
-                        break;
-                    case '/':
-                        result /= nums[count];
-                        count++;
-                        break;
+                    switch (op[i])
+                    {
+                        case '+':
+                            result += nums[count];
+                            count++;
+                            break;
+                        case '-':
+                            result -= nums[count];
+                            count++;
+                            break;
+                        case '*':
+                            result *= nums[count];
+                            count++;
+                            break;
+                        case '/':
+                            result /= nums[count];
+                            count++;
+                            break;
+                    }
                 }
-            }
 
-            txtBox_Result.Text = result.ToString();
-            op.Clear();
-            nums.Clear();
-            result = 0;
+                txtBox_Result.Text = result.ToString();
+                op.Clear();
+                nums.Clear();
+                result = 0;
+            }
         }
 
         private void AddToTextBox(char c)
@@ -133,6 +137,9 @@ namespace Lommeregner
 
         private bool OpSwitchCheck()
         {
+            //if (textBoxString == String.Empty)
+            //    return true;
+
             if (textBoxString[textBoxString.Length - 1] == '+' || textBoxString[textBoxString.Length - 1] == '-' ||
                 textBoxString[textBoxString.Length - 1] == '/' || textBoxString[textBoxString.Length - 1] == '*')
             {
