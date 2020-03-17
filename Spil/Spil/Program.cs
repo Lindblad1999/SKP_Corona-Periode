@@ -108,8 +108,10 @@ namespace Spil
             int aim = rand.Next(0, 10);
             do
             {
-                
-                Console.Write("Indtast tal: ");
+                string indtastTalText = "INPUT NUMBER";
+                Console.SetCursorPosition(DefaultCursorPositionWidth(indtastTalText), DefaultCursorPositionHeight());
+                Tools.ColorfullWrite(indtastTalText, ConsoleColor.Blue);
+                Console.SetCursorPosition(WINDOW_WIDTH / 2, DefaultCursorPositionHeight() + 1);
                 int input = int.Parse(Console.ReadLine());
 
                 if(input == aim)
@@ -119,14 +121,27 @@ namespace Spil
                 }
                 else if(input < aim)
                 {
-                    Console.WriteLine("HIGHER");
+                    string higherText = "HIGHER";
+                    Console.Clear();
+                    Console.SetCursorPosition(DefaultCursorPositionWidth(higherText), DefaultCursorPositionHeight() - 2);
+                    Tools.ColorfullWrite(higherText, ConsoleColor.Red);
                     attempts++;
                 }
                 else if(input > aim)
                 {
-                    Console.WriteLine("LOWER");
+                    string lowerText = "LOWER";
+                    Console.Clear();
+                    Console.SetCursorPosition(DefaultCursorPositionWidth(lowerText), DefaultCursorPositionHeight() - 2);
+                    Tools.ColorfullWrite(lowerText, ConsoleColor.Red);
                     attempts++;
                 }
+
+                string attemptsRemaining = "ATTEMPTS REMAINING";
+                Console.SetCursorPosition(DefaultCursorPositionWidth(attemptsRemaining), DefaultCursorPositionHeight() + 5);
+                Tools.ColorfullWrite(attemptsRemaining,ConsoleColor.Green);
+
+                Console.SetCursorPosition(WINDOW_WIDTH / 2, DefaultCursorPositionHeight() + 6);
+                Tools.ColorfullWrite((3-attempts).ToString(), ConsoleColor.Green);
 
                 if (attempts == 3)
                     gameOver = true;
@@ -134,12 +149,30 @@ namespace Spil
 
             if (win)
             {
-                Console.WriteLine("YOU WIN");
+                Win();
             }
             else
             {
-                Console.WriteLine("YOU LSE");
+                Lose();
             }
+        }
+
+        static void Win()
+        {
+            string winText = "YOU WIN";
+            Console.Clear();
+            Console.SetCursorPosition(DefaultCursorPositionWidth(winText), DefaultCursorPositionHeight() + 3);
+            Tools.ColorfullWrite(winText, ConsoleColor.Green);
+            Console.ReadKey();
+        }
+
+        static void Lose()
+        {
+            string loseText = "YOU WIN";
+            Console.Clear();
+            Console.SetCursorPosition(DefaultCursorPositionWidth(loseText), DefaultCursorPositionHeight() + 3);
+            Tools.ColorfullWrite(loseText, ConsoleColor.Red);
+            Console.ReadKey();
         }
     }
 }
