@@ -21,12 +21,25 @@ namespace Spil
 
         static void Dos_Main()
         {
-            switch (StartMenu())
+            bool end = false;
+            do
             {
-                case 1:
-                    Game_Loop();
-                    break;
-            }
+                switch (StartMenu())
+                {
+                    case 1:
+                        Game_Loop();
+                        break;
+                    case 2:
+                        Settings();
+                        break;
+                    case 3:
+                        HowToPlay();
+                        break;
+                    case 4:
+                        end = true;
+                        break;
+                }
+            } while (!end);
         }
 
         static int StartMenu()
@@ -75,10 +88,14 @@ namespace Spil
                         case ConsoleKey.UpArrow:
                             if (menuChoiceNumber != 1)
                                 menuChoiceNumber -= 1;
+                            else
+                                menuChoiceNumber = 4;
                             break;
                         case ConsoleKey.DownArrow:
                             if (menuChoiceNumber != 4)
                                 menuChoiceNumber += 1;
+                            else
+                                menuChoiceNumber = 1;
                             break;
                         case ConsoleKey.Enter:
                             Console.Clear();
@@ -86,7 +103,7 @@ namespace Spil
                             return menuChoiceNumber;
                     }
                 } while (choice != ConsoleKey.UpArrow && choice != ConsoleKey.DownArrow && choice != ConsoleKey.Enter);
-                Console.Clear();
+                //Console.Clear();
             } while (choice != ConsoleKey.Enter);
             return 0;
         }
@@ -114,12 +131,12 @@ namespace Spil
                 Console.SetCursorPosition(WINDOW_WIDTH / 2, DefaultCursorPositionHeight() + 1);
                 int input = int.Parse(Console.ReadLine());
 
-                if(input == aim)
+                if (input == aim)
                 {
                     win = true;
                     gameOver = true;
                 }
-                else if(input < aim)
+                else if (input < aim)
                 {
                     string higherText = "HIGHER";
                     Console.Clear();
@@ -127,7 +144,7 @@ namespace Spil
                     Tools.ColorfullWrite(higherText, ConsoleColor.Red);
                     attempts++;
                 }
-                else if(input > aim)
+                else if (input > aim)
                 {
                     string lowerText = "LOWER";
                     Console.Clear();
@@ -138,10 +155,10 @@ namespace Spil
 
                 string attemptsRemaining = "ATTEMPTS REMAINING";
                 Console.SetCursorPosition(DefaultCursorPositionWidth(attemptsRemaining), DefaultCursorPositionHeight() + 5);
-                Tools.ColorfullWrite(attemptsRemaining,ConsoleColor.Green);
+                Tools.ColorfullWrite(attemptsRemaining, ConsoleColor.Green);
 
                 Console.SetCursorPosition(WINDOW_WIDTH / 2, DefaultCursorPositionHeight() + 6);
-                Tools.ColorfullWrite((3-attempts).ToString(), ConsoleColor.Green);
+                Tools.ColorfullWrite((3 - attempts).ToString(), ConsoleColor.Green);
 
                 if (attempts == 3)
                     gameOver = true;
@@ -173,6 +190,29 @@ namespace Spil
             Console.SetCursorPosition(DefaultCursorPositionWidth(loseText), DefaultCursorPositionHeight() + 3);
             Tools.ColorfullWrite(loseText, ConsoleColor.Red);
             Console.ReadKey();
+        }
+
+        static void Settings()
+        {
+
+        }
+
+        static void HowToPlay()
+        {
+            string mes1 = "Navigate menu with arrow keys";
+            string mes2 = "Enter guess and press enter";
+            string mes3 = "An indicator will show whether";
+            string mes3v2 = "the target number is higher or lower";
+            Console.SetCursorPosition(DefaultCursorPositionWidth(mes1), DefaultCursorPositionHeight());
+            Tools.ColorfullWrite(mes1, ConsoleColor.Blue);
+            Console.SetCursorPosition(DefaultCursorPositionWidth(mes2), DefaultCursorPositionHeight() + 2);
+            Tools.ColorfullWrite(mes2, ConsoleColor.Blue);
+            Console.SetCursorPosition(DefaultCursorPositionWidth(mes3), DefaultCursorPositionHeight() + 4);
+            Tools.ColorfullWrite(mes3, ConsoleColor.Blue);
+            Console.SetCursorPosition(DefaultCursorPositionWidth(mes3v2), DefaultCursorPositionHeight() + 5);
+            Tools.ColorfullWrite(mes3v2, ConsoleColor.Blue);
+            Console.ReadKey();
+            Console.Clear();
         }
     }
 }
