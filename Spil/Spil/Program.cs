@@ -8,6 +8,9 @@ namespace Spil
         public const int WINDOW_WIDTH = 60;
         public const bool CURSOR_VISIBLE = false;
 
+        public static bool gameOver = false;
+        public static bool win = false;
+
         static void Main(string[] args)
         {
             Console.WindowHeight = WINDOW_HEIGHT;
@@ -95,7 +98,43 @@ namespace Spil
 
         static void Game_Loop()
         {
+            int attempts = 0;
+            Random rand = new Random();
+            int aim = rand.Next(0, 10);
+            do
+            {
+                
+                Console.Write("Indtast tal: ");
+                int input = int.Parse(Console.ReadLine());
 
+                if(input == aim)
+                {
+                    win = true;
+                    gameOver = true;
+                }
+                else if(input < aim)
+                {
+                    Console.WriteLine("HIGHER");
+                    attempts++;
+                }
+                else if(input > aim)
+                {
+                    Console.WriteLine("LOWER");
+                    attempts++;
+                }
+
+                if (attempts == 3)
+                    gameOver = true;
+            } while (!gameOver);
+
+            if (win)
+            {
+                Console.WriteLine("YOU WIN");
+            }
+            else
+            {
+                Console.WriteLine("YOU LSE");
+            }
         }
     }
 }
