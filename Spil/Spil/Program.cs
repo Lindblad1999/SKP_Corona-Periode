@@ -21,7 +21,12 @@ namespace Spil
 
         static void Dos_Main()
         {
-            StartMenu();
+            switch (StartMenu())
+            {
+                case 1:
+                    Game_Loop();
+                    break;
+            }
         }
 
         static int StartMenu()
