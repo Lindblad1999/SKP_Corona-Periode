@@ -92,5 +92,10 @@ namespace Spil
         {
             return (Console.WindowHeight / 4);
         }
+
+        static void Game_Loop()
+        {
+
+        }
     }
 }
