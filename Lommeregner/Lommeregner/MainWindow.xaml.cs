@@ -211,6 +211,28 @@ namespace Lommeregner
         private void btnNegative_Click(object sender, RoutedEventArgs e)
         {
             createNum('-');
+            Line line = new Line();
+            line.Visibility = Visibility.Visible;
+            line.StrokeThickness = 4;
+            line.Stroke = Brushes.Black;
+            line.X1 = 10;
+            line.X2 = 150;
+            line.Y1 = 70;
+            line.Y2 = 70;
+            can.Children.Add(line);
+        }
+
+        private void can_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+            //Rectangle rect = new Rectangle();
+            //rect.Visibility = Visibility.Visible;
+            //rect.StrokeThickness = 4;
+            //rect.Stroke = Brushes.Green;
+            ////rect.
+            ////rect.RadiusX = 20;
+
+            //can.Children.Add(rect);
         }
     }
 

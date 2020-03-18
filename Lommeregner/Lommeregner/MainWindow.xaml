@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lommeregner"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="300.763">
+        Title="MainWindow" Height="450" Width="634.763">
     <Grid Margin="0,0,2,0">
         <TextBox x:Name="txtBox_Result" HorizontalAlignment="Left" Height="100" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="271" Background="#FFAEAEAE" FontSize="20"/>
         <Button x:Name="btn1" Content="1" HorizontalAlignment="Left" Margin="10,115,0,0" VerticalAlignment="Top" Width="50" Height="50" Click="btn1_Click"/>
@@ -24,5 +24,6 @@
         <Button x:Name="btnMultiply" Content="*" HorizontalAlignment="Left" Margin="231,225,0,0" VerticalAlignment="Top" Width="50" Height="50" Click="btnMultiply_Click"/>
         <Button x:Name="btnDivider" Content="/" HorizontalAlignment="Left" Margin="231,280,0,0" VerticalAlignment="Top" Width="50" Height="50" Click="btnDivider_Click"/>
         <Button x:Name="btnNegative" Content="Neg" HorizontalAlignment="Left" Margin="231,335,0,0" VerticalAlignment="Top" Width="50" Height="50" Click="btnNegative_Click"/>
+        <Canvas x:Name="can" HorizontalAlignment="Left" Height="399" Margin="297,10,0,0" VerticalAlignment="Top" Width="328" MouseDown="can_MouseDown" Background="#FFA69A9A"/>
     </Grid>
 </Window>

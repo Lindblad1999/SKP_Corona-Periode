@@ -9,7 +9,8 @@ namespace Spil
         public const bool CURSOR_VISIBLE = false;
 
         public static bool gameOver = false;
-        public static bool win = false;
+        public static bool win;
+        public static int streak;
 
         static void Main(string[] args)
         {
@@ -123,7 +124,8 @@ namespace Spil
             Random rand = new Random();
             do
             {
-
+                gameOver = false;
+                win = false;
                 int attempts = 0;
                 int aim = rand.Next(0, 10);
                 do
@@ -134,6 +136,12 @@ namespace Spil
                     Console.SetCursorPosition(WINDOW_WIDTH / 2, DefaultCursorPositionHeight() + 1);
                     int input = -1;
 
+                    string attemptsRemaining = "ATTEMPTS REMAINING";
+                    Console.SetCursorPosition(DefaultCursorPositionWidth(attemptsRemaining), DefaultCursorPositionHeight() + 5);
+                    Tools.ColorfullWrite(attemptsRemaining, ConsoleColor.Green);
+
+                    Console.SetCursorPosition(WINDOW_WIDTH / 2, DefaultCursorPositionHeight() + 6);
+                    Tools.ColorfullWrite((3 - attempts).ToString(), ConsoleColor.Green);
                     bool keySuccess = false;
                     do
                     {
@@ -205,26 +213,24 @@ namespace Spil
                         attempts++;
                     }
 
-                    string attemptsRemaining = "ATTEMPTS REMAINING";
-                    Console.SetCursorPosition(DefaultCursorPositionWidth(attemptsRemaining), DefaultCursorPositionHeight() + 5);
-                    Tools.ColorfullWrite(attemptsRemaining, ConsoleColor.Green);
-
-                    Console.SetCursorPosition(WINDOW_WIDTH / 2, DefaultCursorPositionHeight() + 6);
-                    Tools.ColorfullWrite((3 - attempts).ToString(), ConsoleColor.Green);
 
                     if (attempts == 3)
                         gameOver = true;
                 } while (!gameOver);
+
+                if (win)
+                {
+                    Win();
+                    gameOver = false;
+                    win = false;
+                    streak += 1;
+                }
+                else
+                {
+                    Lose();
+                }
             } while (!gameOver);
 
-            if (win)
-            {
-                Win();
-            }
-            else
-            {
-                Lose();
-            }
         }
 
         static void Win()
@@ -234,15 +240,17 @@ namespace Spil
             Console.SetCursorPosition(DefaultCursorPositionWidth(winText), DefaultCursorPositionHeight() + 3);
             Tools.ColorfullWrite(winText, ConsoleColor.Green);
             Console.ReadKey();
+            Console.Clear();
         }
 
         static void Lose()
         {
-            string loseText = "YOU WIN";
+            string loseText = "YOU LOSE";
             Console.Clear();
             Console.SetCursorPosition(DefaultCursorPositionWidth(loseText), DefaultCursorPositionHeight() + 3);
             Tools.ColorfullWrite(loseText, ConsoleColor.Red);
             Console.ReadKey();
+            Console.Clear();
         }
 
         static void Settings()
