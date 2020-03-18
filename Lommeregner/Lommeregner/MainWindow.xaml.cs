@@ -220,6 +220,13 @@ namespace Lommeregner
             line.Y1 = 70;
             line.Y2 = 70;
             can.Children.Add(line);
+
+            Ellipse ell = new Ellipse();
+            ell.Width = 50;
+            ell.Height = 50;
+            ell.Stroke = Brushes.Black;
+            ell.StrokeThickness = 4;
+            can.Children.Add(ell);
         }
 
         private void can_MouseDown(object sender, MouseButtonEventArgs e)

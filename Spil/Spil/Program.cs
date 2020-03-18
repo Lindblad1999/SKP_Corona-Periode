@@ -121,6 +121,7 @@ namespace Spil
 
         static void Game_Loop()
         {
+            streak = 0;
             Random rand = new Random();
             do
             {
@@ -139,9 +140,12 @@ namespace Spil
                     string attemptsRemaining = "ATTEMPTS REMAINING";
                     Console.SetCursorPosition(DefaultCursorPositionWidth(attemptsRemaining), DefaultCursorPositionHeight() + 5);
                     Tools.ColorfullWrite(attemptsRemaining, ConsoleColor.Green);
-
                     Console.SetCursorPosition(WINDOW_WIDTH / 2, DefaultCursorPositionHeight() + 6);
                     Tools.ColorfullWrite((3 - attempts).ToString(), ConsoleColor.Green);
+
+                    string streakText = $"STREAK: {streak}";
+                    Console.SetCursorPosition(2, 2);
+                    Tools.ColorfullWrite(streakText, ConsoleColor.Yellow);
                     bool keySuccess = false;
                     do
                     {
@@ -246,9 +250,12 @@ namespace Spil
         static void Lose()
         {
             string loseText = "YOU LOSE";
+            string streakText = $"YOUR STREAK WAS {streak}";
             Console.Clear();
             Console.SetCursorPosition(DefaultCursorPositionWidth(loseText), DefaultCursorPositionHeight() + 3);
             Tools.ColorfullWrite(loseText, ConsoleColor.Red);
+            Console.SetCursorPosition(DefaultCursorPositionWidth(streakText), DefaultCursorPositionHeight() + 5);
+            Tools.ColorfullWrite(streakText, ConsoleColor.Green);
             Console.ReadKey();
             Console.Clear();
         }
