@@ -120,97 +120,101 @@ namespace Spil
 
         static void Game_Loop()
         {
-            int attempts = 0;
             Random rand = new Random();
-            int aim = rand.Next(0, 10);
             do
             {
-                string indtastTalText = "INPUT NUMBER";
-                Console.SetCursorPosition(DefaultCursorPositionWidth(indtastTalText), DefaultCursorPositionHeight());
-                Tools.ColorfullWrite(indtastTalText, ConsoleColor.Blue);
-                Console.SetCursorPosition(WINDOW_WIDTH / 2, DefaultCursorPositionHeight() + 1);
-                int input = -1;
 
-                bool keySuccess = false;
+                int attempts = 0;
+                int aim = rand.Next(0, 10);
                 do
                 {
-                    ConsoleKey ja = Console.ReadKey(true).Key;
-                    switch (ja)
+                    string indtastTalText = "INPUT NUMBER";
+                    Console.SetCursorPosition(DefaultCursorPositionWidth(indtastTalText), DefaultCursorPositionHeight());
+                    Tools.ColorfullWrite(indtastTalText, ConsoleColor.Blue);
+                    Console.SetCursorPosition(WINDOW_WIDTH / 2, DefaultCursorPositionHeight() + 1);
+                    int input = -1;
+
+                    bool keySuccess = false;
+                    do
                     {
-                        case ConsoleKey.D0:
-                            input = 0;
-                            keySuccess = true;
-                            break;
-                        case ConsoleKey.D2:
-                            input = 2;
-                            keySuccess = true;
-                            break;
-                        case ConsoleKey.D3:
-                            input = 3;
-                            keySuccess = true;
-                            break;
-                        case ConsoleKey.D4:
-                            input = 4;
-                            keySuccess = true;
-                            break;
-                        case ConsoleKey.D5:
-                            input = 5;
-                            keySuccess = true;
-                            break;
-                        case ConsoleKey.D6:
-                            input = 6;
-                            keySuccess = true;
-                            break;
-                        case ConsoleKey.D7:
-                            input = 7;
-                            keySuccess = true;
-                            break;
-                        case ConsoleKey.D8:
-                            input = 8;
-                            keySuccess = true;
-                            break;
-                        case ConsoleKey.D9:
-                            input = 9;
-                            keySuccess = true;
-                            break;
-                        case ConsoleKey.D1:
-                            input = 1;
-                            keySuccess = true;
-                            break;
+                        ConsoleKey ja = Console.ReadKey(true).Key;
+                        switch (ja)
+                        {
+                            case ConsoleKey.D0:
+                                input = 0;
+                                keySuccess = true;
+                                break;
+                            case ConsoleKey.D2:
+                                input = 2;
+                                keySuccess = true;
+                                break;
+                            case ConsoleKey.D3:
+                                input = 3;
+                                keySuccess = true;
+                                break;
+                            case ConsoleKey.D4:
+                                input = 4;
+                                keySuccess = true;
+                                break;
+                            case ConsoleKey.D5:
+                                input = 5;
+                                keySuccess = true;
+                                break;
+                            case ConsoleKey.D6:
+                                input = 6;
+                                keySuccess = true;
+                                break;
+                            case ConsoleKey.D7:
+                                input = 7;
+                                keySuccess = true;
+                                break;
+                            case ConsoleKey.D8:
+                                input = 8;
+                                keySuccess = true;
+                                break;
+                            case ConsoleKey.D9:
+                                input = 9;
+                                keySuccess = true;
+                                break;
+                            case ConsoleKey.D1:
+                                input = 1;
+                                keySuccess = true;
+                                break;
+                        }
+                    } while (!keySuccess);
+
+                    if (input == aim)
+                    {
+                        win = true;
+                        gameOver = true;
                     }
-                } while (!keySuccess);
+                    else if (input < aim)
+                    {
+                        string higherText = $"HIGHER THAN {input}";
+                        Console.Clear();
+                        Console.SetCursorPosition(DefaultCursorPositionWidth(higherText), DefaultCursorPositionHeight() - 2);
+                        Tools.ColorfullWrite(higherText, ConsoleColor.Red);
+                        attempts++;
+                    }
+                    else if (input > aim)
+                    {
+                        string lowerText = $"LOWER THAN {input}";
+                        Console.Clear();
+                        Console.SetCursorPosition(DefaultCursorPositionWidth(lowerText), DefaultCursorPositionHeight() - 2);
+                        Tools.ColorfullWrite(lowerText, ConsoleColor.Red);
+                        attempts++;
+                    }
 
-                if (input == aim)
-                {
-                    win = true;
-                    gameOver = true;
-                }
-                else if (input < aim)
-                {
-                    string higherText = $"HIGHER THAN {input}";
-                    Console.Clear();
-                    Console.SetCursorPosition(DefaultCursorPositionWidth(higherText), DefaultCursorPositionHeight() - 2);
-                    Tools.ColorfullWrite(higherText, ConsoleColor.Red);
-                    attempts++;
-                }
-                else if (input > aim)
-                {
-                    string lowerText = $"LOWER THAN {input}";
-                    Console.Clear();
-                    Console.SetCursorPosition(DefaultCursorPositionWidth(lowerText), DefaultCursorPositionHeight() - 2);
-                    Tools.ColorfullWrite(lowerText, ConsoleColor.Red);
-                    attempts++;
-                }
+                    string attemptsRemaining = "ATTEMPTS REMAINING";
+                    Console.SetCursorPosition(DefaultCursorPositionWidth(attemptsRemaining), DefaultCursorPositionHeight() + 5);
+                    Tools.ColorfullWrite(attemptsRemaining, ConsoleColor.Green);
 
-                string attemptsRemaining = "ATTEMPTS REMAINING";
-                Console.SetCursorPosition(DefaultCursorPositionWidth(attemptsRemaining), DefaultCursorPositionHeight() + 5);
-                Tools.ColorfullWrite(attemptsRemaining, ConsoleColor.Green);
+                    Console.SetCursorPosition(WINDOW_WIDTH / 2, DefaultCursorPositionHeight() + 6);
+                    Tools.ColorfullWrite((3 - attempts).ToString(), ConsoleColor.Green);
 
-                Console.SetCursorPosition(WINDOW_WIDTH / 2, DefaultCursorPositionHeight() + 6);
-                Tools.ColorfullWrite((3 - attempts).ToString(), ConsoleColor.Green);
-
-                if (attempts == 3)
-                    gameOver = true;
+                    if (attempts == 3)
+                        gameOver = true;
+                } while (!gameOver);
             } while (!gameOver);
 
             if (win)
