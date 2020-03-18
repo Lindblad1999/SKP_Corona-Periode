@@ -5,8 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LommeregnerV2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="My Calculator" Height="409" Width="400">
     <Grid>
-        
+        <TabControl x:Name="TabControlMain" HorizontalAlignment="Left" Width="392">
+            <TabItem Header="Lommeregner">
+                <Grid Background="#FFE5E5E5">
+                    <Label x:Name="lblMain" Content="" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="49" Width="366" Background="#FFB4B4B4"/>
+                    <Button x:Name="btn1" Content="1" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top" Width="50" Height="50" Click="btn1_Click"/>
+                    <Button x:Name="btn2" Content="2" HorizontalAlignment="Left" Margin="65,64,0,0" VerticalAlignment="Top" Width="50" Height="50" Click="btn2_Click"/>
+                    <Button x:Name="btn3" Content="3" HorizontalAlignment="Left" Margin="120,64,0,0" VerticalAlignment="Top" Width="50" Height="50" Click="btn3_Click"/>
+                    <Button x:Name="btn4" Content="4" HorizontalAlignment="Left" Margin="10,119,0,0" VerticalAlignment="Top" Width="50" Height="50" Click="btn4_Click"/>
+                    <Button x:Name="btn5" Content="5" HorizontalAlignment="Left" Margin="65,119,0,0" VerticalAlignment="Top" Width="50" Height="50" Click="btn5_Click"/>
+                    <Button x:Name="btn6" Content="6" HorizontalAlignment="Left" Margin="120,119,0,0" VerticalAlignment="Top" Width="50" Height="50" Click="btn6_Click"/>
+                    <Button x:Name="btn7" Content="7" HorizontalAlignment="Left" Margin="10,174,0,0" VerticalAlignment="Top" Width="50" Height="50" Click="btn7_Click"/>
+                    <Button x:Name="btn8" Content="8" HorizontalAlignment="Left" Margin="65,174,0,0" VerticalAlignment="Top" Width="50" Height="50" Click="btn8_Click"/>
+                    <Button x:Name="btn9" Content="9" HorizontalAlignment="Left" Margin="120,174,0,0" VerticalAlignment="Top" Width="50" Height="50" Click="btn9_Click"/>
+                    <Button x:Name="btn0" Content="0" HorizontalAlignment="Left" Margin="65,229,0,0" VerticalAlignment="Top" Width="50" Height="50" Click="btn0_Click"/>
+                    <Button x:Name="btnPlus" Content="+" HorizontalAlignment="Left" Margin="200,64,0,0" VerticalAlignment="Top" Width="50" Height="50"/>
+                    <Button x:Name="btnMinus" Content="-" HorizontalAlignment="Left" Margin="200,119,0,0" VerticalAlignment="Top" Width="50" Height="50"/>
+                    <Button x:Name="btnGange" Content="*" HorizontalAlignment="Left" Margin="200,174,0,0" VerticalAlignment="Top" Width="50" Height="50"/>
+                    <Button x:Name="btnDivider" Content="/" HorizontalAlignment="Left" Margin="200,229,0,0" VerticalAlignment="Top" Width="50" Height="50"/>
+                    <Button x:Name="btnClear" Content="C" HorizontalAlignment="Left" Margin="120,229,0,0" VerticalAlignment="Top" Width="50" Height="50"/>
+                    <Button x:Name="btnEquals" Content="=" HorizontalAlignment="Left" Margin="10,284,0,0" VerticalAlignment="Top" Width="160" Height="50" FontSize="20"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Circle">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="Square">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
