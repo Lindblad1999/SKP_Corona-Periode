@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Lommeregnerv2.Properties
+namespace LommeregnerV2.Properties
 {
 
 

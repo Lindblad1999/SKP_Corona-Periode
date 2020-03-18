@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29905.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lommeregnerv2", "Lommeregnerv2\Lommeregnerv2.csproj", "{F3331BE6-2E35-48C6-81CC-46689186D56E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LommeregnerV2", "LommeregnerV2\LommeregnerV2.csproj", "{FE3D8B63-6B03-4A7B-8C17-87AB0542B9BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F3331BE6-2E35-48C6-81CC-46689186D56E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F3331BE6-2E35-48C6-81CC-46689186D56E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F3331BE6-2E35-48C6-81CC-46689186D56E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F3331BE6-2E35-48C6-81CC-46689186D56E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE3D8B63-6B03-4A7B-8C17-87AB0542B9BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE3D8B63-6B03-4A7B-8C17-87AB0542B9BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE3D8B63-6B03-4A7B-8C17-87AB0542B9BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE3D8B63-6B03-4A7B-8C17-87AB0542B9BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {0EADAFED-80C7-4F11-81C7-8C126F4490F8}
+		SolutionGuid = {E305D07D-E863-4BFF-BF29-6D5E509F2A18}
 	EndGlobalSection
 EndGlobal
