@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace Spil
 {
@@ -18,6 +19,10 @@ namespace Spil
             Console.WindowWidth = WINDOW_WIDTH;
             Console.CursorVisible = CURSOR_VISIBLE;
             Dos_Main();
+            //for (int i = 0; i < 5; i++)
+            //{
+            //    WriteHighscore(1);
+            //}
         }
 
         static void Dos_Main()
@@ -31,7 +36,7 @@ namespace Spil
                         Game_Loop();
                         break;
                     case 2:
-                        Highscore();
+                        DisplayHighscore();
                         break;
                     case 3:
                         HowToPlay();
@@ -257,9 +262,38 @@ namespace Spil
             Console.Clear();
         }
 
-        static void Highscore()
+        static void DisplayHighscore()
         {
+            string scoreText = "CURRENT HIGHSCORE:";
+            string score = ReadHighscore();
+            Console.Clear();
+            Console.SetCursorPosition(DefaultCursorPositionWidth(scoreText), DefaultCursorPositionHeight());
+            Tools.ColorfullWrite(scoreText, ConsoleColor.Blue);
+            Console.SetCursorPosition(DefaultCursorPositionWidth(score), DefaultCursorPositionHeight());
+            Tools.ColorfullWrite(score, ConsoleColor.Green);
+            Console.ReadKey();
+            Console.Clear();
+        }
 
+        static string ReadHighscore()
+        {
+            try
+            {
+                return File.ReadAllText(@"\highscore.txt");
+            }
+            catch (Exception)
+            {
+                return "N/A";
+            }
+        }
+
+        static void WriteHighscore(int score)
+        {
+            try
+            {
+                File.WriteAllText(@"\highscore.txt", "ok");
+            }
+            catch (Exception) { }
         }
 
         static void HowToPlay()
