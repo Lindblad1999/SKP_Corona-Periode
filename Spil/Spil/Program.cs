@@ -19,10 +19,6 @@ namespace Spil
             Console.WindowWidth = WINDOW_WIDTH;
             Console.CursorVisible = CURSOR_VISIBLE;
             Dos_Main();
-            //for (int i = 0; i < 5; i++)
-            //{
-            //    WriteHighscore(1);
-            //}
         }
 
         static void Dos_Main()
@@ -258,6 +254,16 @@ namespace Spil
             Tools.ColorfullWrite(loseText, ConsoleColor.Red);
             Console.SetCursorPosition(DefaultCursorPositionWidth(streakText), DefaultCursorPositionHeight() + 5);
             Tools.ColorfullWrite(streakText, ConsoleColor.Green);
+
+            if(streak > int.Parse(ReadHighscore()))
+            {
+                WriteHighscore(streak);
+                string highscoreText = "NEW HIGHSCORE!:";
+                Console.SetCursorPosition(DefaultCursorPositionWidth(highscoreText), DefaultCursorPositionHeight() + 8);
+                Tools.ColorfullWrite(highscoreText, ConsoleColor.Blue);
+                Console.SetCursorPosition(DefaultCursorPositionWidth(streak.ToString()), DefaultCursorPositionHeight() + 9);
+                Tools.ColorfullWrite(streak.ToString(), ConsoleColor.Yellow);
+            }
             Console.ReadKey();
             Console.Clear();
         }
