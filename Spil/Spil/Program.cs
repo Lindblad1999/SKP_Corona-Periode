@@ -31,7 +31,7 @@ namespace Spil
                         Game_Loop();
                         break;
                     case 2:
-                        Settings();
+                        Highscore();
                         break;
                     case 3:
                         HowToPlay();
@@ -60,7 +60,7 @@ namespace Spil
                 else
                     Tools.ColorfullWrite(menuChoice1, ConsoleColor.White);
 
-                string menuChoice2 = "-- SETTINGS --";
+                string menuChoice2 = "-- HIGHSCORE --";
                 Console.SetCursorPosition(DefaultCursorPositionWidth(menuChoice2), DefaultCursorPositionHeight() + 6);
                 if (menuChoiceNumber == 2)
                     Tools.ColorfullWrite(menuChoice2, ConsoleColor.Yellow);
@@ -217,7 +217,6 @@ namespace Spil
                         attempts++;
                     }
 
-
                     if (attempts == 3)
                         gameOver = true;
                 } while (!gameOver);
@@ -230,9 +229,7 @@ namespace Spil
                     streak += 1;
                 }
                 else
-                {
                     Lose();
-                }
             } while (!gameOver);
 
         }
@@ -260,7 +257,7 @@ namespace Spil
             Console.Clear();
         }
 
-        static void Settings()
+        static void Highscore()
         {
 
         }
