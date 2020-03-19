@@ -297,9 +297,10 @@ namespace Spil
         {
             try
             {
+                File.WriteAllText(@"\\highscore.txt", String.Empty);
                 File.WriteAllText(@"\highscore.txt", "ok");
             }
-            catch (Exception) { }
+            catch (Exception e) { Console.WriteLine(e); }
         }
 
         static void HowToPlay()
