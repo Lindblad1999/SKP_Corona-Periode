@@ -82,6 +82,13 @@ namespace Spil
                 else
                     Tools.ColorfullWrite(menuChoice4, ConsoleColor.White);
 
+                string guideText1 = "use arrow keys to navigate";
+                string guideText2 = "press enter to select";
+                Console.SetCursorPosition(WINDOW_WIDTH - guideText1.Length - 3, WINDOW_HEIGHT - 1);
+                Tools.ColorfullWrite(guideText1, ConsoleColor.DarkGray);
+                Console.SetCursorPosition(WINDOW_WIDTH - guideText1.Length - 3, WINDOW_HEIGHT);
+                Tools.ColorfullWrite(guideText2, ConsoleColor.DarkGray);
+
                 do
                 {
                     choice = Console.ReadKey(true).Key;
@@ -105,7 +112,6 @@ namespace Spil
                             return menuChoiceNumber;
                     }
                 } while (choice != ConsoleKey.UpArrow && choice != ConsoleKey.DownArrow && choice != ConsoleKey.Enter);
-                //Console.Clear();
             } while (choice != ConsoleKey.Enter);
             return 0;
         }
@@ -230,7 +236,7 @@ namespace Spil
                     streak += 1;
                 }
                 else
-                    Lose();
+                    Lose(aim);
             } while (!gameOver);
 
         }
@@ -238,32 +244,42 @@ namespace Spil
         static void Win()
         {
             string winText = "YOU WIN";
+            string continueText = "Press any key to continue...";
             Console.Clear();
             Console.SetCursorPosition(DefaultCursorPositionWidth(winText), DefaultCursorPositionHeight() + 3);
             Tools.ColorfullWrite(winText, ConsoleColor.Green);
+            Console.SetCursorPosition(DefaultCursorPositionWidth(continueText), DefaultCursorPositionHeight() + 6);
+            Tools.ColorfullWrite(continueText, ConsoleColor.White);
             Console.ReadKey();
             Console.Clear();
         }
 
-        static void Lose()
+        static void Lose(int aim)
         {
             string loseText = "YOU LOSE";
+            string aimText = $"TARGET WAS: {aim.ToString()}";
             string streakText = $"YOUR STREAK WAS {streak}";
             Console.Clear();
-            Console.SetCursorPosition(DefaultCursorPositionWidth(loseText), DefaultCursorPositionHeight() + 3);
+            Console.SetCursorPosition(DefaultCursorPositionWidth(loseText), DefaultCursorPositionHeight() + 1);
             Tools.ColorfullWrite(loseText, ConsoleColor.Red);
-            Console.SetCursorPosition(DefaultCursorPositionWidth(streakText), DefaultCursorPositionHeight() + 5);
+            Console.SetCursorPosition(DefaultCursorPositionWidth(aimText), DefaultCursorPositionHeight() + 2);
+            Tools.ColorfullWrite(aimText, ConsoleColor.Green);
+            Console.SetCursorPosition(DefaultCursorPositionWidth(streakText), DefaultCursorPositionHeight() + 3);
             Tools.ColorfullWrite(streakText, ConsoleColor.Green);
 
-            if(streak > int.Parse(ReadHighscore()))
+            if(streak > Convert.ToInt32(ReadHighscore()))
             {
                 WriteHighscore(streak);
                 string highscoreText = "NEW HIGHSCORE!:";
-                Console.SetCursorPosition(DefaultCursorPositionWidth(highscoreText), DefaultCursorPositionHeight() + 8);
+                Console.SetCursorPosition(DefaultCursorPositionWidth(highscoreText), DefaultCursorPositionHeight() + 6);
                 Tools.ColorfullWrite(highscoreText, ConsoleColor.Blue);
-                Console.SetCursorPosition(DefaultCursorPositionWidth(streak.ToString()), DefaultCursorPositionHeight() + 9);
+                Console.SetCursorPosition(DefaultCursorPositionWidth(streak.ToString()), DefaultCursorPositionHeight() + 7);
                 Tools.ColorfullWrite(streak.ToString(), ConsoleColor.Yellow);
             }
+
+            string continueText = "Press any key to continue...";
+            Console.SetCursorPosition(DefaultCursorPositionWidth(continueText), DefaultCursorPositionHeight() + 9);
+            Tools.ColorfullWrite(continueText, ConsoleColor.White);
             Console.ReadKey();
             Console.Clear();
         }
@@ -275,8 +291,12 @@ namespace Spil
             Console.Clear();
             Console.SetCursorPosition(DefaultCursorPositionWidth(scoreText), DefaultCursorPositionHeight());
             Tools.ColorfullWrite(scoreText, ConsoleColor.Blue);
-            Console.SetCursorPosition(DefaultCursorPositionWidth(score), DefaultCursorPositionHeight());
+            Console.SetCursorPosition(DefaultCursorPositionWidth(score), DefaultCursorPositionHeight() + 1);
             Tools.ColorfullWrite(score, ConsoleColor.Green);
+
+            string continueText = "Press any key to continue...";
+            Console.SetCursorPosition(DefaultCursorPositionWidth(continueText), DefaultCursorPositionHeight() + 9);
+            Tools.ColorfullWrite(continueText, ConsoleColor.White);
             Console.ReadKey();
             Console.Clear();
         }
@@ -285,11 +305,11 @@ namespace Spil
         {
             try
             {
-                return File.ReadAllText(@"\highscore.txt");
+                return File.ReadAllText(@"E:\Program Files (x86)\Microsoft Visual Studio\Projects\SKP_Corona-Periode\Spil\Spil\highscore.txt");
             }
             catch (Exception)
             {
-                return "N/A";
+                return "-1";
             }
         }
 
@@ -297,8 +317,8 @@ namespace Spil
         {
             try
             {
-                File.WriteAllText(@"\\highscore.txt", String.Empty);
-                File.WriteAllText(@"\highscore.txt", "ok");
+                File.WriteAllText(@"E:\Program Files (x86)\Microsoft Visual Studio\Projects\SKP_Corona-Periode\Spil\Spil\highscore.txt", String.Empty);
+                File.WriteAllText(@"E:\Program Files (x86)\Microsoft Visual Studio\Projects\SKP_Corona-Periode\Spil\Spil\highscore.txt", score.ToString());
             }
             catch (Exception e) { Console.WriteLine(e); }
         }
@@ -317,6 +337,10 @@ namespace Spil
             Tools.ColorfullWrite(mes3, ConsoleColor.Blue);
             Console.SetCursorPosition(DefaultCursorPositionWidth(mes3v2), DefaultCursorPositionHeight() + 5);
             Tools.ColorfullWrite(mes3v2, ConsoleColor.Blue);
+
+            string continueText = "Press any key to continue...";
+            Console.SetCursorPosition(DefaultCursorPositionWidth(continueText), DefaultCursorPositionHeight() + 9);
+            Tools.ColorfullWrite(continueText, ConsoleColor.White);
             Console.ReadKey();
             Console.Clear();
         }

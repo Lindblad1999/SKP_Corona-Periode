@@ -126,6 +126,7 @@ namespace Lommeregner
                 txtBox_Result.Text = result.ToString();
                 op.Clear();
                 nums.Clear();
+                count = 0;
                 textBoxString = String.Empty;
                 currentString = String.Empty;
                 result = 0;
