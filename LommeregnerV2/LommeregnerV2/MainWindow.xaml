@@ -49,6 +49,16 @@
                     </Canvas>
                 </Grid>
             </TabItem>
+            <TabItem Header="Trapez">
+                <Canvas x:Name="canvasTrapez" Margin="10,10,17,9" Loaded="canvasTrapez_Loaded">
+                    <TextBox x:Name="txtBox_TrapezHeight" Height="23" Canvas.Left="10" TextWrapping="Wrap" Text="Height" Canvas.Top="190" Width="63"/>
+                    <TextBox x:Name="txtBox_TrapezTop" Height="23" Canvas.Left="140" TextWrapping="Wrap" Text="Top" Canvas.Top="118" Width="63"/>
+                    <TextBox x:Name="txtBox_TrapezBot" Height="23" Canvas.Left="140" TextWrapping="Wrap" Text="Bottom" Canvas.Top="272" Width="63"/>
+                    <Button x:Name="btnCalculateTrapez" Content="Calculate" Canvas.Left="22" Canvas.Top="23" Width="75" Click="btnCalculateTrapez_Click"/>
+                    <Label x:Name="lblTrapezArea" Content="Area: " Canvas.Left="140" Canvas.Top="20" Width="113"/>
+                </Canvas>
+
+            </TabItem>
         </TabControl>
     </Grid>
 </Window>

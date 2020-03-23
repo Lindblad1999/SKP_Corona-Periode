@@ -161,6 +161,7 @@ namespace LommeregnerV2
             return false;
         }
 
+        #region op Buttons
         private void btnPlus_Click(object sender, RoutedEventArgs e)
         {
             if (!FirstOpCheck())
@@ -214,6 +215,8 @@ namespace LommeregnerV2
             createNum('-');
         }
 
+        #endregion
+
         private void canvasCircle_Loaded(object sender, RoutedEventArgs e)
         {
             Ellipse ell = new Ellipse();
@@ -252,6 +255,56 @@ namespace LommeregnerV2
             {
                 double result = height * width;
                 lblSquareArea.Content = $"Area: {result.ToString()}";
+            }
+        }
+
+        private void canvasTrapez_Loaded(object sender, RoutedEventArgs e)
+        {
+            Line l1 = new Line();
+            l1.X1 = 50;
+            l1.Y1 = 250;
+            l1.X2 = 300;
+            l1.Y2 = 250;
+            l1.Stroke = Brushes.Black;
+            l1.StrokeThickness = 4;
+            canvasTrapez.Children.Add(l1);
+
+            Line l2 = new Line();
+            l2.X1 = 50;
+            l2.Y1 = 250;
+            l2.X2 = 150;
+            l2.Y2 = 150;
+            l2.Stroke = Brushes.Black;
+            l2.StrokeThickness = 4;
+            canvasTrapez.Children.Add(l2);
+
+            Line l3 = new Line();
+            l3.X1 = 300;
+            l3.Y1 = 250;
+            l3.X2 = 200;
+            l3.Y2 = 150;
+            l3.Stroke = Brushes.Black;
+            l3.StrokeThickness = 4;
+            canvasTrapez.Children.Add(l3);
+
+            Line l4 = new Line();
+            l4.X1 = 150;
+            l4.Y1 = 150;
+            l4.X2 = 200;
+            l4.Y2 = 150;
+            l4.Stroke = Brushes.Black;
+            l4.StrokeThickness = 4;
+            canvasTrapez.Children.Add(l4);
+        }
+
+        private void btnCalculateTrapez_Click(object sender, RoutedEventArgs e)
+        {
+            if (txtBox_TrapezHeight.Text != String.Empty && txtBox_TrapezBot.Text != String.Empty && txtBox_TrapezTop.Text != String.Empty &&
+                double.TryParse(txtBox_TrapezHeight.Text, out double height) && double.TryParse(txtBox_TrapezBot.Text, out double bot) &&
+                double.TryParse(txtBox_TrapezTop.Text, out double top))
+            {
+                double result = ((top + bot) / 2) * Convert.ToDouble(height);
+                lblTrapezArea.Content = $"Area: {result.ToString()}";
             }
         }
     }
