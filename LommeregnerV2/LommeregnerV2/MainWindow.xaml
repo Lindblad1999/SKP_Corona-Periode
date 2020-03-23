@@ -10,7 +10,6 @@
         <TabControl x:Name="TabControlMain" HorizontalAlignment="Left" Width="392">
             <TabItem Header="Lommeregner">
                 <Grid Background="#FFE5E5E5">
-                    <Label x:Name="lblMain" Content="" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="49" Width="366" Background="#FFB4B4B4"/>
                     <Button x:Name="btn1" Content="1" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top" Width="50" Height="50" Click="btn1_Click"/>
                     <Button x:Name="btn2" Content="2" HorizontalAlignment="Left" Margin="65,64,0,0" VerticalAlignment="Top" Width="50" Height="50" Click="btn2_Click"/>
                     <Button x:Name="btn3" Content="3" HorizontalAlignment="Left" Margin="120,64,0,0" VerticalAlignment="Top" Width="50" Height="50" Click="btn3_Click"/>
@@ -21,19 +20,34 @@
                     <Button x:Name="btn8" Content="8" HorizontalAlignment="Left" Margin="65,174,0,0" VerticalAlignment="Top" Width="50" Height="50" Click="btn8_Click"/>
                     <Button x:Name="btn9" Content="9" HorizontalAlignment="Left" Margin="120,174,0,0" VerticalAlignment="Top" Width="50" Height="50" Click="btn9_Click"/>
                     <Button x:Name="btn0" Content="0" HorizontalAlignment="Left" Margin="65,229,0,0" VerticalAlignment="Top" Width="50" Height="50" Click="btn0_Click"/>
-                    <Button x:Name="btnPlus" Content="+" HorizontalAlignment="Left" Margin="200,64,0,0" VerticalAlignment="Top" Width="50" Height="50"/>
-                    <Button x:Name="btnMinus" Content="-" HorizontalAlignment="Left" Margin="200,119,0,0" VerticalAlignment="Top" Width="50" Height="50"/>
-                    <Button x:Name="btnGange" Content="*" HorizontalAlignment="Left" Margin="200,174,0,0" VerticalAlignment="Top" Width="50" Height="50"/>
-                    <Button x:Name="btnDivider" Content="/" HorizontalAlignment="Left" Margin="200,229,0,0" VerticalAlignment="Top" Width="50" Height="50"/>
-                    <Button x:Name="btnClear" Content="C" HorizontalAlignment="Left" Margin="120,229,0,0" VerticalAlignment="Top" Width="50" Height="50"/>
-                    <Button x:Name="btnEquals" Content="=" HorizontalAlignment="Left" Margin="10,284,0,0" VerticalAlignment="Top" Width="160" Height="50" FontSize="20"/>
+                    <Button x:Name="btnPlus" Content="+" HorizontalAlignment="Left" Margin="200,64,0,0" VerticalAlignment="Top" Width="50" Height="50" Click="btnPlus_Click"/>
+                    <Button x:Name="btnMinus" Content="-" HorizontalAlignment="Left" Margin="200,119,0,0" VerticalAlignment="Top" Width="50" Height="50" Click="btnMinus_Click"/>
+                    <Button x:Name="btnGange" Content="*" HorizontalAlignment="Left" Margin="200,174,0,0" VerticalAlignment="Top" Width="50" Height="50" Click="btnMultiply_Click"/>
+                    <Button x:Name="btnDivider" Content="/" HorizontalAlignment="Left" Margin="200,229,0,0" VerticalAlignment="Top" Width="50" Height="50" Click="btnDivider_Click"/>
+                    <Button x:Name="btnEquals" Content="=" HorizontalAlignment="Left" Margin="10,284,0,0" VerticalAlignment="Top" Width="160" Height="50" FontSize="20" Click="btnEquals_Click"/>
+                    <TextBox x:Name="txtBox_Result" HorizontalAlignment="Left" Height="59" TextWrapping="Wrap" VerticalAlignment="Top" Width="369" Background="#FF9B9B9B"/>
+                    <Button x:Name="btnNegative" Content="Neg" HorizontalAlignment="Left" Margin="200,284,0,0" VerticalAlignment="Top" Width="50" Height="50" Click="btnNegative_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Circle">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <Canvas x:Name="canvasCircle" HorizontalAlignment="Left" Height="330" Margin="10,10,0,0" VerticalAlignment="Top" Width="366" RenderTransformOrigin="0.5,0.51" Loaded="canvasCircle_Loaded">
+                        <Label x:Name="lblRadius" Content="Radius: "/>
+                        <TextBox x:Name="txtBox_Radius" Height="23" Canvas.Left="51" TextWrapping="Wrap" Canvas.Top="4" Width="53"/>
+                        <Button x:Name="btnCalculateRadius" Content="Calculate" Canvas.Left="10" Canvas.Top="300" Width="75" Click="btnCalculateRadius_Click"/>
+                        <Label x:Name="lblCircleArea" Content="Area: " Canvas.Left="291" Canvas.Top="297"/>
+                    </Canvas>
+                </Grid>
             </TabItem>
             <TabItem Header="Square">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <Canvas x:Name="canvasSquare" HorizontalAlignment="Left" Height="330" Margin="10,10,0,0" VerticalAlignment="Top" Width="366" Loaded="canvasSquare_Loaded">
+                        <TextBox x:Name="txtBox_SquareHeight" Height="23" Canvas.Left="10" TextWrapping="Wrap" Text="Height" Canvas.Top="155" Width="50"/>
+                        <TextBox x:Name="txtBox_SquareWidth" Height="23" Canvas.Left="153" TextWrapping="Wrap" Text="Width" Canvas.Top="34" Width="50"/>
+                        <Button x:Name="btnCalculateSquare" Content="Calculate" Canvas.Left="10" Canvas.Top="300" Width="75" Click="btnCalculateSquare_Click"/>
+                        <Label x:Name="lblSquareArea" Content="Area: " Canvas.Left="270" Canvas.Top="300" Width="76"/>
+                    </Canvas>
+                </Grid>
             </TabItem>
         </TabControl>
     </Grid>

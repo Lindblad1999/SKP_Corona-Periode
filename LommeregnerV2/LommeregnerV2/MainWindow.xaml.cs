@@ -25,58 +25,234 @@ namespace LommeregnerV2
             InitializeComponent();
         }
 
-        #region Numbers
+        public List<double> nums = new List<double>();
+        public List<char> op = new List<char>();
+        public string currentString = String.Empty;
+        public double result = 0;
+        public int count = 0;
+        public string textBoxString = String.Empty;
 
-        private void btn0_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
+        #region numbers
         private void btn1_Click(object sender, RoutedEventArgs e)
         {
-
+            createNum('1');
         }
 
         private void btn2_Click(object sender, RoutedEventArgs e)
         {
-
+            createNum('2');
         }
 
         private void btn3_Click(object sender, RoutedEventArgs e)
         {
-
+            createNum('3');
         }
 
         private void btn4_Click(object sender, RoutedEventArgs e)
         {
-
+            createNum('4');
         }
 
         private void btn5_Click(object sender, RoutedEventArgs e)
         {
-
+            createNum('5');
         }
 
         private void btn6_Click(object sender, RoutedEventArgs e)
         {
-
+            createNum('6');
         }
 
         private void btn7_Click(object sender, RoutedEventArgs e)
         {
-
+            createNum('7');
         }
 
         private void btn8_Click(object sender, RoutedEventArgs e)
         {
-
+            createNum('8');
         }
 
         private void btn9_Click(object sender, RoutedEventArgs e)
         {
-
+            createNum('9');
         }
 
+        private void btn0_Click(object sender, RoutedEventArgs e)
+        {
+            createNum('0');
+        }
         #endregion
+
+        private void createNum(char c)
+        {
+            currentString += c;
+            textBoxString += c;
+            txtBox_Result.Clear();
+            txtBox_Result.Text = textBoxString;
+        }
+
+        private void btnEquals_Click(object sender, RoutedEventArgs e)
+        {
+            if (nums.Count != 0)
+            {
+                if (!OpSwitchCheck())
+                    nums.Add(Convert.ToDouble(currentString));
+                result = nums[count];
+                count++;
+                for (int i = 0; i < op.Count; i++)
+                {
+                    switch (op[i])
+                    {
+                        case '+':
+                            result += nums[count];
+                            count++;
+                            break;
+                        case '-':
+                            result -= nums[count];
+                            count++;
+                            break;
+                        case '*':
+                            result *= nums[count];
+                            count++;
+                            break;
+                        case '/':
+                            result /= nums[count];
+                            count++;
+                            break;
+                    }
+                }
+
+                txtBox_Result.Text = result.ToString();
+                op.Clear();
+                nums.Clear();
+                count = 0;
+                textBoxString = String.Empty;
+                currentString = String.Empty;
+                result = 0;
+            }
+        }
+
+        private void AddToTextBox(char c)
+        {
+            textBoxString += c;
+            txtBox_Result.Clear();
+            txtBox_Result.Text = textBoxString;
+        }
+
+        private bool OpSwitchCheck()
+        {
+            if (textBoxString[textBoxString.Length - 1] == '+' || textBoxString[textBoxString.Length - 1] == '-' ||
+                textBoxString[textBoxString.Length - 1] == '/' || textBoxString[textBoxString.Length - 1] == '*')
+            {
+                op.RemoveAt(op.Count - 1);
+                textBoxString = textBoxString.Substring(0, textBoxString.Length - 1);
+                return true;
+            }
+            return false;
+        }
+
+        private bool FirstOpCheck()
+        {
+            if (currentString == String.Empty)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private void btnPlus_Click(object sender, RoutedEventArgs e)
+        {
+            if (!FirstOpCheck())
+            {
+                if (!OpSwitchCheck())
+                    nums.Add(Convert.ToDouble(currentString));
+                op.Add('+');
+                AddToTextBox('+');
+                currentString = String.Empty;
+            }
+        }
+
+        private void btnMinus_Click(object sender, RoutedEventArgs e)
+        {
+            if (!FirstOpCheck())
+            {
+                if (!OpSwitchCheck())
+                    nums.Add(Convert.ToDouble(currentString));
+                op.Add('-');
+                AddToTextBox('-');
+                currentString = String.Empty;
+            }
+        }
+
+        private void btnDivider_Click(object sender, RoutedEventArgs e)
+        {
+            if (!FirstOpCheck())
+            {
+                if (!OpSwitchCheck())
+                    nums.Add(Convert.ToDouble(currentString));
+                op.Add('/');
+                AddToTextBox('/');
+                currentString = String.Empty;
+            }
+        }
+
+        private void btnMultiply_Click(object sender, RoutedEventArgs e)
+        {
+            if (!FirstOpCheck())
+            {
+                if (!OpSwitchCheck())
+                    nums.Add(Convert.ToDouble(currentString));
+                op.Add('*');
+                AddToTextBox('*');
+                currentString = String.Empty;
+            }
+        }
+
+        private void btnNegative_Click(object sender, RoutedEventArgs e)
+        {
+            createNum('-');
+        }
+
+        private void canvasCircle_Loaded(object sender, RoutedEventArgs e)
+        {
+            Ellipse ell = new Ellipse();
+            ell.Width = 200;
+            ell.Height = 200;
+            ell.Stroke = Brushes.Black;
+            ell.StrokeThickness = 4;
+            ell.Margin = new Thickness(canvasCircle.Width / 5, canvasCircle.Height / 5, 0, 0);
+            canvasCircle.Children.Add(ell);
+        }
+
+        private void btnCalculateRadius_Click(object sender, RoutedEventArgs e)
+        {
+            if(txtBox_Radius.Text != String.Empty && int.TryParse(txtBox_Radius.Text, out int radius))
+            {
+                double result = Math.Pow(Convert.ToDouble(radius), 2) * Math.PI;
+                lblCircleArea.Content = $"Area: {result.ToString()}";
+            }
+        }
+
+        private void canvasSquare_Loaded(object sender, RoutedEventArgs e)
+        {
+            Rectangle rect = new Rectangle();
+            rect.Height = 200;
+            rect.Width = 200;
+            rect.Stroke = Brushes.Black;
+            rect.StrokeThickness = 4;
+            rect.Margin = new Thickness(canvasSquare.Width / 5, canvasSquare.Height / 5, 0, 0);
+            canvasSquare.Children.Add(rect);
+        }
+
+        private void btnCalculateSquare_Click(object sender, RoutedEventArgs e)
+        {
+            if(txtBox_SquareHeight.Text != String.Empty && txtBox_SquareWidth.Text != String.Empty &&
+                int.TryParse(txtBox_SquareHeight.Text, out int height) && int.TryParse(txtBox_SquareWidth.Text, out int width))
+            {
+                double result = height * width;
+                lblSquareArea.Content = $"Area: {result.ToString()}";
+            }
+        }
     }
 }
