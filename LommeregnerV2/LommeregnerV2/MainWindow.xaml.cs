@@ -92,6 +92,11 @@ namespace LommeregnerV2
             txtBox_Result.Text = textBoxString;
         }
 
+        /// <summary>
+        /// Goes through all the numers and operators in the list, and calculates the result.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnEquals_Click(object sender, RoutedEventArgs e)
         {
             if (nums.Count != 0)
@@ -133,6 +138,10 @@ namespace LommeregnerV2
             }
         }
 
+        /// <summary>
+        /// Adds the current pressed char to the text box
+        /// </summary>
+        /// <param name="c"></param>
         private void AddToTextBox(char c)
         {
             textBoxString += c;
@@ -140,6 +149,10 @@ namespace LommeregnerV2
             txtBox_Result.Text = textBoxString;
         }
 
+        /// <summary>
+        /// Checks if two or more operators has been pressed in a row
+        /// </summary>
+        /// <returns></returns>
         private bool OpSwitchCheck()
         {
             if (textBoxString[textBoxString.Length - 1] == '+' || textBoxString[textBoxString.Length - 1] == '-' ||
@@ -152,6 +165,10 @@ namespace LommeregnerV2
             return false;
         }
 
+        /// <summary>
+        /// Checks if the current string is empty or not
+        /// </summary>
+        /// <returns>returnns a blooean based on the result</returns>
         private bool FirstOpCheck()
         {
             if (currentString == String.Empty)
@@ -216,7 +233,10 @@ namespace LommeregnerV2
         }
 
         #endregion
-
+        
+        /// <summary>
+        /// Draws the circle on the canvas
+        /// </summary>
         private void canvasCircle_Loaded(object sender, RoutedEventArgs e)
         {
             Ellipse ell = new Ellipse();
@@ -228,6 +248,9 @@ namespace LommeregnerV2
             canvasCircle.Children.Add(ell);
         }
 
+        /// <summary>
+        /// Calculates the area of the circle using the user input
+        /// </summary>
         private void btnCalculateRadius_Click(object sender, RoutedEventArgs e)
         {
             if(txtBox_Radius.Text != String.Empty && int.TryParse(txtBox_Radius.Text, out int radius))
@@ -237,6 +260,9 @@ namespace LommeregnerV2
             }
         }
 
+        /// <summary>
+        /// Draws the square on the canvas
+        /// </summary>
         private void canvasSquare_Loaded(object sender, RoutedEventArgs e)
         {
             Rectangle rect = new Rectangle();
@@ -248,6 +274,9 @@ namespace LommeregnerV2
             canvasSquare.Children.Add(rect);
         }
 
+        /// <summary>
+        /// Button that takes the input from the text boxes, and uses it in the formula, to calculate the area of the square
+        /// </summary>
         private void btnCalculateSquare_Click(object sender, RoutedEventArgs e)
         {
             if(txtBox_SquareHeight.Text != String.Empty && txtBox_SquareWidth.Text != String.Empty &&
@@ -258,6 +287,9 @@ namespace LommeregnerV2
             }
         }
 
+        /// <summary>
+        /// Event handler that is called when the canvas is loaded. It draws the trapez on he canvas
+        /// </summary>
         private void canvasTrapez_Loaded(object sender, RoutedEventArgs e)
         {
             Line l1 = new Line();
@@ -297,6 +329,10 @@ namespace LommeregnerV2
             canvasTrapez.Children.Add(l4);
         }
 
+        /// <summary>
+        /// Button click that takes the numbers from the text box and uses them in the formula
+        /// to calculate and display the area of the trapez
+        /// </summary>
         private void btnCalculateTrapez_Click(object sender, RoutedEventArgs e)
         {
             if (txtBox_TrapezHeight.Text != String.Empty && txtBox_TrapezBot.Text != String.Empty && txtBox_TrapezTop.Text != String.Empty &&
