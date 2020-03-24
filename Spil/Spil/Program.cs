@@ -13,6 +13,10 @@ namespace Spil
         public static bool win;
         public static int streak;
 
+        /// <summary>
+        /// Main mathod that just sets some default values in the program.
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
             Console.WindowHeight = WINDOW_HEIGHT;
@@ -21,6 +25,9 @@ namespace Spil
             Dos_Main();
         }
 
+        /// <summary>
+        /// The program loop that calls difererent methods based on the user input in the menu.
+        /// </summary>
         static void Dos_Main()
         {
             bool end = false;
@@ -44,6 +51,11 @@ namespace Spil
             } while (!end);
         }
 
+        /// <summary>
+        /// The stgart menu that displays menu options, and allows the user to cycle through
+        /// using the arrow keys.
+        /// </summary>
+        /// <returns></returns>
         static int StartMenu()
         {
             int menuChoiceNumber = 1;
@@ -116,16 +128,29 @@ namespace Spil
             return 0;
         }
 
+        /// <summary>
+        /// Method that finds where the cursor should be placed in order
+        /// for the input text to be centered.
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
         static int DefaultCursorPositionWidth(string text)
         {
             return (Console.WindowWidth / 2) - (text.Length / 2);
         }
 
+        /// <summary>
+        /// Method to find the default cursor poition height
+        /// </summary>
+        /// <returns></returns>
         static int DefaultCursorPositionHeight()
         {
             return (Console.WindowHeight / 4);
         }
 
+        /// <summary>
+        /// The Game loop, where the entire functionality of the game occurs.
+        /// </summary>
         static void Game_Loop()
         {
             streak = 0;
@@ -241,6 +266,9 @@ namespace Spil
 
         }
 
+        /// <summary>
+        /// Method is called if the user wins. displays you win.
+        /// </summary>
         static void Win()
         {
             string winText = "YOU WIN";
@@ -254,6 +282,11 @@ namespace Spil
             Console.Clear();
         }
 
+        /// <summary>
+        /// Method is called when the user loses. It displays the target number, the streak the user got.
+        /// And it checks whether that streak was a new highscore or not.
+        /// </summary>
+        /// <param name="aim"></param>
         static void Lose(int aim)
         {
             string loseText = "YOU LOSE";
@@ -284,6 +317,9 @@ namespace Spil
             Console.Clear();
         }
 
+        /// <summary>
+        /// Displays the curent highscore on the screen
+        /// </summary>
         static void DisplayHighscore()
         {
             string scoreText = "CURRENT HIGHSCORE:";
@@ -301,6 +337,10 @@ namespace Spil
             Console.Clear();
         }
 
+        /// <summary>
+        /// Reads the current highscore from the text document
+        /// </summary>
+        /// <returns>the highscore as a string</returns>
         static string ReadHighscore()
         {
             try
@@ -313,6 +353,10 @@ namespace Spil
             }
         }
 
+        /// <summary>
+        /// Removes the old highscore from the text file and writes the new one
+        /// </summary>
+        /// <param name="score"></param>
         static void WriteHighscore(int score)
         {
             try
@@ -323,6 +367,9 @@ namespace Spil
             catch (Exception e) { Console.WriteLine(e); }
         }
 
+        /// <summary>
+        /// Displays instructions on the screen
+        /// </summary>
         static void HowToPlay()
         {
             string mes1 = "Navigate menu with arrow keys";
