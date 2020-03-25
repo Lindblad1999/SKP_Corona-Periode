@@ -24,7 +24,7 @@ namespace Edabit
 			CountOnes(34);
 			Maskify("4556364607935616");
 			IsIsogram("Algorism");
-			AlternatingCaps("Hej med dig");
+			Console.Write(AlternatingCaps("Hej med dig"));
 		}
 
 		public static int SockPairs(string socks)
@@ -339,6 +339,32 @@ namespace Edabit
 			}
 		}
 
+		public static string AlternatingCaps(string str)
+		{
+			string returnString = String.Empty;
+
+			int count = 0;
+			foreach (char c in str)
+			{
+				if(c != ' ')
+				{
+					if (count % 2 == 0)
+						returnString += str[count].ToString().ToUpper();
+					else
+						returnString += str[count].ToString().ToLower();
+					count++;
+				}
+			}
+
+			//for (int i = 0; i < str.Length; i++)
+			//{
+			//	if (i % 2 == 0)
+			//		returnString += str[i].ToString().ToUpper();
+			//	else
+			//		returnString += str[i].ToString().ToLower();
+			//}
+			return returnString;
+		}
 	}
 
 }
