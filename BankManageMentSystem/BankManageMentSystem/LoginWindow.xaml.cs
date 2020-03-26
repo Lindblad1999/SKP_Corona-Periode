@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BankManageMentSystem.SQLTools;
 
 namespace BankManageMentSystem
 {
@@ -23,11 +24,16 @@ namespace BankManageMentSystem
         public LoginWindow()
         {
             InitializeComponent();
+            ConnectToSQL.ConnectionStringServerAuthentication();
+            //ConnectToSQL.ConnectionStringWindowsAuthentication();
         }
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
+            if (SQLLogin.CheckLogin(txtBoxUsername.Text, passwordBoxPassword.Password))
+            {
 
+            }
         }
     }
 }
