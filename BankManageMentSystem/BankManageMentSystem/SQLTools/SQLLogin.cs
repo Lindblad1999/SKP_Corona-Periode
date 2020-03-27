@@ -12,7 +12,7 @@ namespace BankManageMentSystem.SQLTools
     {
         public static bool CheckLogin(string usernameUserInput, string passwordUserInput)
         {
-            string command = "SELECT Username, Password FROM Bank.Logins";
+            string command = "SELECT Username, Password FROM Logins";
 
             using (SqlConnection connection = new SqlConnection(ConnectToSQL.connStr.ConnectionString))
             {

@@ -32,8 +32,15 @@ namespace BankManageMentSystem
         {
             if (SQLLogin.CheckLogin(txtBoxUsername.Text, passwordBoxPassword.Password))
             {
-
+                MessageBox.Show("Success");
             }
+            else
+                MessageBox.Show("Failure");
+        }
+
+        private void lblNewUser_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show("dads");
         }
     }
 }

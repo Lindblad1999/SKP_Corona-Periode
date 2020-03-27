@@ -24,7 +24,7 @@ namespace BankManageMentSystem.SQLTools
             connStr.InitialCatalog = "Bank";
             connStr.IntegratedSecurity = false;
             connStr.UserID = "sa";
-            connStr.Password = "<@Passw0rd>";
+            connStr.Password = "<Passw0rd>";
         }
     }
 }
