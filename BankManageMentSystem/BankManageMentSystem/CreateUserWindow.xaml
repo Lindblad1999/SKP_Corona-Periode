@@ -5,8 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BankManageMentSystem"
         mc:Ignorable="d"
-        Title="CreateUserWindow" Height="450" Width="800">
+        Title="CreateUserWindow" Height="450" Width="400">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+        <TextBox x:Name="txtBoxFirstname" HorizontalAlignment="Left" Margin="10,10,0,10" TextWrapping="Wrap" Text="Firstname" Width="120"/>
+        <TextBox x:Name="txtBoxLastname" HorizontalAlignment="Left" Margin="10,10,0,10" TextWrapping="Wrap" Text="Lastname" Width="120" Grid.Row="1"/>
+        <TextBox x:Name="txtBoxCity" HorizontalAlignment="Left" Margin="10,10,0,10" TextWrapping="Wrap" Text="City" Width="120" Grid.Row="2"/>
+        <TextBox x:Name="txtBoxAddress" HorizontalAlignment="Left" Margin="10,10,0,10" TextWrapping="Wrap" Text="Address" Width="120" Grid.Row="3"/>
+        <TextBox x:Name="txtBoxUsername" HorizontalAlignment="Left" Margin="10,10,0,10" TextWrapping="Wrap" Text="Username" Width="120" Grid.Row="5"/>
+        <TextBox x:Name="txtBoxPassword" HorizontalAlignment="Left" Margin="10,10,0,10" TextWrapping="Wrap" Text="Password" Width="120" Grid.Row="6"/>
+        <TextBox x:Name="txtBoxConfirmPassword" HorizontalAlignment="Left" Margin="10,10,0,10" TextWrapping="Wrap" Text="ConfirmPassword" Width="120" Grid.Row="7"/>
+        <DatePicker x:Name="DatePickerDate" HorizontalAlignment="Left" Margin="10,10,0,10" Grid.Row="4" Width="120"/>
+        <Button x:Name="btnCreateUser" Content="Create" HorizontalAlignment="Left" Margin="10,10,0,10" Grid.Row="8" Width="120" Click="btnCreateUser_Click"/>
+
     </Grid>
 </Window>

@@ -40,7 +40,9 @@ namespace BankManageMentSystem
 
         private void lblNewUser_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            MessageBox.Show("dads");
+            CreateUserWindow newUserWindow = new CreateUserWindow();
+            newUserWindow.Show();
+            this.Close();
         }
     }
 }

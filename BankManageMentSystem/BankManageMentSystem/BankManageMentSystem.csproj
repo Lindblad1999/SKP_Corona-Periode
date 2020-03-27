@@ -59,7 +59,9 @@
       <DependentUpon>CreateUserWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="SQLTools\ConnectToSQL.cs" />
+    <Compile Include="SQLTools\SQLCreateUser.cs" />
     <Compile Include="SQLTools\SQLLogin.cs" />
+    <Compile Include="User.cs" />
     <Page Include="CreateUserWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
