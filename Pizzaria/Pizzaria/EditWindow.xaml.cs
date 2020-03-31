@@ -22,10 +22,10 @@ namespace Pizzaria
     {
         private Pizza pizza;
         
-        public EditWindow(string currentPizzaName, Pizza pizza)
+        public EditWindow(Pizza pizza)
         {
             InitializeComponent();
-            this.pizza = new Pizza(pizza.Ingredients, pizza.MediumPrice, pizza.Name);
+            this.pizza = pizza;
             lblPizzaName.Content = pizza.Name;
 
             UpdateListBoxes();
@@ -34,18 +34,31 @@ namespace Pizzaria
             listBoxCurrentIngredients.SelectedIndex = 0;
         }
 
+        /// <summary>
+        /// Adds the selected ingredient, to the current pizzas ingredient list
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             pizza.Ingredients.Add((Ingredients)listBoxAllIngredients.SelectedIndex);
             UpdateListBoxes();
         }
 
+        /// <summary>
+        /// Removes the selected ingredient, from the current pizzas ingredient list
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnRemove_Click(object sender, RoutedEventArgs e)
         {
             pizza.Ingredients.RemoveAt(listBoxCurrentIngredients.SelectedIndex);
             UpdateListBoxes();
         }
 
+        /// <summary>
+        /// Updates the content of the 2 list boxes.
+        /// </summary>
         private void UpdateListBoxes()
         {
             listBoxAllIngredients.Items.Clear();
@@ -60,6 +73,27 @@ namespace Pizzaria
             {
                 listBoxCurrentIngredients.Items.Add(s.ToString());
             }
+        }
+
+        /// <summary>
+        /// Adds the current pizza to the basket list
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnAddToBasket_Click(object sender, RoutedEventArgs e)
+        {
+            Basket.basket.Add(pizza);
+            this.Close();
+        }
+
+        /// <summary>
+        /// Closes the Window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

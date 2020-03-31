@@ -5,13 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pizzaria"
         mc:Ignorable="d"
-        Title="EditWindow" Height="450" Width="634.183">
+        Title="EditWindow" Height="450" Width="535.458">
     <Grid>
         <Label x:Name="lblPizzaName" Content="pizza name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="68" Width="372" FontSize="22" FontWeight="Bold"/>
-        <ListBox x:Name="listBoxAllIngredients" Margin="10,78,416,54"/>
-        <ListBox x:Name="listBoxCurrentIngredients" Height="287" VerticalAlignment="Top" Margin="310,78,0,0" HorizontalAlignment="Left" Width="200"/>
-        <Button x:Name="btnAdd" Content="-&gt;" Margin="215,78,321,278" Click="btnAdd_Click"/>
-        <Button x:Name="btnRemove" Content="&lt;-" Margin="215,162,321,194" Click="btnRemove_Click"/>
+        <ListBox x:Name="listBoxAllIngredients" Margin="10,78,0,54" HorizontalAlignment="Left" Width="193"/>
+        <ListBox x:Name="listBoxCurrentIngredients" Height="287" VerticalAlignment="Top" Margin="310,78,17,0"/>
+        <Button x:Name="btnAdd" Content="-&gt;" Margin="215,78,0,278" Click="btnAdd_Click" HorizontalAlignment="Left" Width="83"/>
+        <Button x:Name="btnRemove" Content="&lt;-" Margin="215,162,0,194" Click="btnRemove_Click" HorizontalAlignment="Left" Width="83"/>
+        <Button x:Name="btnAddToBasket" Content="Add to basket" HorizontalAlignment="Left" Margin="104,370,0,0" VerticalAlignment="Top" Width="99" Height="39" Click="btnAddToBasket_Click"/>
+        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="310,370,0,0" VerticalAlignment="Top" Width="99" Height="39" Click="btnCancel_Click"/>
 
     </Grid>
 </Window>

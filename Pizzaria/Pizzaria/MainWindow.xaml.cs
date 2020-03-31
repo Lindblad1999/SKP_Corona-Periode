@@ -21,13 +21,11 @@ namespace Pizzaria
     /// </summary>
     public partial class MainWindow : Window
     {
-        Menu m;
-        List<Pizza> menu;
+        List<Pizza> menu = Menu.menu;
 
         public MainWindow()
         {
             InitializeComponent();
-            m = new Menu();
             ///Displays all pizzas, in the menu window
             foreach (Pizza pizza in menu)
             {
@@ -105,9 +103,18 @@ namespace Pizzaria
             
         }
 
+        /// <summary>
+        /// Creates and opens a new instance of the edit pizza window.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnEditPizza_Click(object sender, RoutedEventArgs e)
         {
-            EditWindow ew = new EditWindow(menu[listBoxPizzas.SelectedIndex].Name, menu[listBoxPizzas.SelectedIndex]);
+            EditWindow ew = new EditWindow(new Pizza(
+                menu[listBoxPizzas.SelectedIndex].Ingredients.GetRange(0, menu[listBoxPizzas.SelectedIndex].Ingredients.Count), 
+                menu[listBoxPizzas.SelectedIndex].MediumPrice,
+                menu[listBoxPizzas.SelectedIndex].Name));
+
             ew.Show();
         }
     }
