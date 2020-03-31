@@ -21,11 +21,13 @@ namespace Pizzaria
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<Pizza> menu = Menu.menu;
+        Menu m;
+        List<Pizza> menu;
 
         public MainWindow()
         {
             InitializeComponent();
+            m = new Menu();
             ///Displays all pizzas, in the menu window
             foreach (Pizza pizza in menu)
             {
@@ -97,5 +99,16 @@ namespace Pizzaria
             SetPriceLabel();
         }
         #endregion
+
+        private void brnAddToBasket_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void btnEditPizza_Click(object sender, RoutedEventArgs e)
+        {
+            EditWindow ew = new EditWindow(menu[listBoxPizzas.SelectedIndex].Name, menu[listBoxPizzas.SelectedIndex]);
+            ew.Show();
+        }
     }
 }

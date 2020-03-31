@@ -1,0 +1,17 @@
+﻿<Window x:Class="Pizzaria.EditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Pizzaria"
+        mc:Ignorable="d"
+        Title="EditWindow" Height="450" Width="634.183">
+    <Grid>
+        <Label x:Name="lblPizzaName" Content="pizza name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="68" Width="372" FontSize="22" FontWeight="Bold"/>
+        <ListBox x:Name="listBoxAllIngredients" Margin="10,78,416,54"/>
+        <ListBox x:Name="listBoxCurrentIngredients" Height="287" VerticalAlignment="Top" Margin="310,78,0,0" HorizontalAlignment="Left" Width="200"/>
+        <Button x:Name="btnAdd" Content="-&gt;" Margin="215,78,321,278" Click="btnAdd_Click"/>
+        <Button x:Name="btnRemove" Content="&lt;-" Margin="215,162,321,194" Click="btnRemove_Click"/>
+
+    </Grid>
+</Window>
