@@ -21,7 +21,7 @@ namespace Pizzaria
     public partial class EditWindow : Window
     {
         private Pizza pizza;
-        
+
         public EditWindow(Pizza pizza)
         {
             InitializeComponent();
@@ -29,6 +29,7 @@ namespace Pizzaria
             lblPizzaName.Content = pizza.Name;
 
             UpdateListBoxes();
+            lblPrice.Content = $"Prce: {pizza.CurrentPrice}";
 
             listBoxAllIngredients.SelectedIndex = 0;
             listBoxCurrentIngredients.SelectedIndex = 0;
@@ -43,6 +44,10 @@ namespace Pizzaria
         {
             pizza.Ingredients.Add((Ingredients)listBoxAllIngredients.SelectedIndex);
             UpdateListBoxes();
+            pizza.CurrentPrice += 5;
+            lblPrice.Content = $"Prce: {pizza.CurrentPrice}";
+            listBoxCurrentIngredients.SelectedIndex = 0;
+            listBoxAllIngredients.SelectedIndex = 0;
         }
 
         /// <summary>
@@ -52,8 +57,15 @@ namespace Pizzaria
         /// <param name="e"></param>
         private void btnRemove_Click(object sender, RoutedEventArgs e)
         {
-            pizza.Ingredients.RemoveAt(listBoxCurrentIngredients.SelectedIndex);
-            UpdateListBoxes();
+            if (listBoxCurrentIngredients.Items.Count > 0)
+            {
+                pizza.Ingredients.RemoveAt(listBoxCurrentIngredients.SelectedIndex);
+                UpdateListBoxes();
+                pizza.CurrentPrice -= 5;
+                lblPrice.Content = $"Prce: {pizza.CurrentPrice}";
+                listBoxCurrentIngredients.SelectedIndex = 0;
+                listBoxAllIngredients.SelectedIndex = 0;
+            }
         }
 
         /// <summary>

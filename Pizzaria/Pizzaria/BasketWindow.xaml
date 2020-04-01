@@ -1,0 +1,17 @@
+﻿<Window x:Class="Pizzaria.BasketWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Pizzaria"
+        mc:Ignorable="d"
+        Title="BasketWindow" Height="450" Width="800">
+    <Grid>
+        <ListBox x:Name="listBoxIngredients" HorizontalAlignment="Left" Height="399" Margin="582,10,0,0" VerticalAlignment="Top" Width="200"/>
+        <ListBox x:Name="listBoxPizzas" HorizontalAlignment="Left" Height="360" Margin="351,10,0,0" VerticalAlignment="Top" Width="200" SelectionChanged="listBoxPizzas_SelectionChanged"/>
+        <Label x:Name="lblTotalPrice" Content="Total Price:" HorizontalAlignment="Left" Margin="213,378,0,0" VerticalAlignment="Top" Height="31" Width="120"/>
+        <Label x:Name="lblCurrentPizzaPrice" Content="Price: " HorizontalAlignment="Left" Margin="213,339,0,0" VerticalAlignment="Top" Height="31" Width="120"/>
+        <Button x:Name="btnRemove" Content="Remove" HorizontalAlignment="Left" Margin="351,381,0,0" VerticalAlignment="Top" Width="200" Height="28" Click="btnRemove_Click"/>
+
+    </Grid>
+</Window>

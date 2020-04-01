@@ -100,7 +100,17 @@ namespace Pizzaria
 
         private void brnAddToBasket_Click(object sender, RoutedEventArgs e)
         {
-            
+            double currentPrice;
+            if (checkBox_Small.IsChecked == true)
+                currentPrice = menu[listBoxPizzas.SelectedIndex].SmallPrice;
+            else if (checkBox_Medium.IsChecked == true)
+                currentPrice = menu[listBoxPizzas.SelectedIndex].MediumPrice;
+            else
+                currentPrice = menu[listBoxPizzas.SelectedIndex].LargePrice;
+
+            Basket.basket.Add(new Pizza(
+                menu[listBoxPizzas.SelectedIndex].Ingredients.GetRange(0, menu[listBoxPizzas.SelectedIndex].Ingredients.Count)
+                , currentPrice, menu[listBoxPizzas.SelectedIndex].Name));
         }
 
         /// <summary>
@@ -110,12 +120,24 @@ namespace Pizzaria
         /// <param name="e"></param>
         private void btnEditPizza_Click(object sender, RoutedEventArgs e)
         {
+            double currentPrice;
+            if (checkBox_Small.IsChecked == true)
+                currentPrice = menu[listBoxPizzas.SelectedIndex].SmallPrice;
+            else if (checkBox_Medium.IsChecked == true)
+                currentPrice = menu[listBoxPizzas.SelectedIndex].MediumPrice;
+            else
+                currentPrice = menu[listBoxPizzas.SelectedIndex].LargePrice;
             EditWindow ew = new EditWindow(new Pizza(
                 menu[listBoxPizzas.SelectedIndex].Ingredients.GetRange(0, menu[listBoxPizzas.SelectedIndex].Ingredients.Count), 
-                menu[listBoxPizzas.SelectedIndex].MediumPrice,
-                menu[listBoxPizzas.SelectedIndex].Name));
+                currentPrice, menu[listBoxPizzas.SelectedIndex].Name));
 
             ew.Show();
+        }
+
+        private void btnViewBasket_Click(object sender, RoutedEventArgs e)
+        {
+            BasketWindow bw = new BasketWindow();
+            bw.Show();
         }
     }
 }

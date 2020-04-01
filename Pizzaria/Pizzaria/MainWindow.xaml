@@ -17,6 +17,7 @@
         <Label x:Name="lblPrice" Content="Price:" HorizontalAlignment="Left" Margin="607,379,0,0" VerticalAlignment="Top"/>
         <Button x:Name="brnAddToBasket" Content="Add to basket" HorizontalAlignment="Left" Margin="317,379,0,10" Width="80" Click="brnAddToBasket_Click"/>
         <Button x:Name="btnEditPizza" Content="Edit" HorizontalAlignment="Left" Margin="317,344,0,45" Width="80" Click="btnEditPizza_Click"/>
+        <Button x:Name="btnViewBasket" Content="View Basket" HorizontalAlignment="Left" Margin="226,344,0,0" VerticalAlignment="Top" Width="86" Height="65" Click="btnViewBasket_Click"/>
 
     </Grid>
 </Window>
