@@ -28,11 +28,18 @@ namespace Pizzaria
 
             listBoxPizzas.SelectedIndex = 0;
             listBoxIngredients.SelectedIndex = 0;
+            listBoxDrinks.SelectedIndex = 0;
 
             foreach (Pizza pizza in Basket.basket)
             {
                 listBoxPizzas.Items.Add(pizza.Name);
                 totalPrice += pizza.CurrentPrice;
+            }
+
+            foreach (Drink drink in Basket.drinkBasket)
+            {
+                listBoxDrinks.Items.Add(drink.Name);
+                totalPrice += drink.CurrentPrice;
             }
 
             lblTotalPrice.Content = $"Total Price: {totalPrice.ToString()}";
@@ -67,11 +74,17 @@ namespace Pizzaria
                 Basket.basket.RemoveAt(listBoxPizzas.SelectedIndex);
 
                 listBoxPizzas.Items.Clear();
+                listBoxDrinks.Items.Clear();
                 totalPrice = 0;
                 foreach (Pizza pizza in Basket.basket)
                 {
                     listBoxPizzas.Items.Add(pizza.Name);
                     totalPrice += pizza.CurrentPrice;
+                }
+                foreach (Drink drink in Basket.drinkBasket)
+                {
+                    listBoxDrinks.Items.Add(drink.Name);
+                    totalPrice += drink.CurrentPrice;
                 }
 
                 if (listBoxPizzas.Items.Count == 0)
@@ -80,6 +93,43 @@ namespace Pizzaria
                 {
                     listBoxPizzas.SelectedIndex = 0;
                     lblCurrentPizzaPrice.Content = $"Price: {Basket.basket[listBoxPizzas.SelectedIndex].CurrentPrice}";
+                }
+                lblTotalPrice.Content = $"Total Price: {totalPrice.ToString()}";
+            }
+        }
+
+        private void listBoxDrinks_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(listBoxDrinks.Items.Count > 0)
+                lblCurrentDrinkPrice.Content = $"Price: {Basket.drinkBasket[listBoxDrinks.SelectedIndex].CurrentPrice}";
+            lblTotalPrice.Content = $"Total Price: {totalPrice.ToString()}";
+        }
+
+        private void btnRemoveDrink_Click(object sender, RoutedEventArgs e)
+        {
+            if(listBoxDrinks.Items.Count > 0)
+            {
+                Basket.drinkBasket.RemoveAt(listBoxDrinks.SelectedIndex);
+                listBoxPizzas.Items.Clear();
+                listBoxDrinks.Items.Clear();
+                totalPrice = 0;
+                foreach (Pizza pizza in Basket.basket)
+                {
+                    listBoxPizzas.Items.Add(pizza.Name);
+                    totalPrice += pizza.CurrentPrice;
+                }
+                foreach (Drink drink in Basket.drinkBasket)
+                {
+                    listBoxDrinks.Items.Add(drink.Name);
+                    totalPrice += drink.CurrentPrice;
+                }
+
+                if (listBoxDrinks.Items.Count == 0)
+                    lblCurrentDrinkPrice.Content = "Price: 0";
+                else
+                {
+                    listBoxDrinks.SelectedIndex = 0;
+                    lblCurrentDrinkPrice.Content = $"Price: {Basket.drinkBasket[listBoxDrinks.SelectedIndex].CurrentPrice}";
                 }
                 lblTotalPrice.Content = $"Total Price: {totalPrice.ToString()}";
             }

@@ -7,7 +7,7 @@ using Pizzaria.Enums;
 
 namespace Pizzaria
 {
-    public class Pizza
+    public class Pizza : Food
     {
         private List<Ingredients> ingredients;
         private string size;

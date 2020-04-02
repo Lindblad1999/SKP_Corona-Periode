@@ -32,7 +32,14 @@ namespace Pizzaria
                 listBoxPizzas.Items.Add(pizza.Name);
             }
 
+            foreach (Drink drink in Menu.drinkMenu)
+            {
+                listBoxDrinks.Items.Add(drink.Name);
+            }
+
             listBoxPizzas.SelectedIndex = 0;
+            listBoxDrinks.SelectedIndex = 0;
+            checkBox_MediumDrink.IsChecked = true;
             checkBox_Medium.IsChecked = true;
         }
 
@@ -45,7 +52,7 @@ namespace Pizzaria
             listBoxIngredients.Items.Clear();
             foreach (Ingredients s in menu[listBoxPizzas.SelectedIndex].Ingredients)
             {
-                listBoxIngredients.Items.Add(s);
+                listBoxIngredients.Items.Add(s.ToString());
             }
             SetPriceLabel();
         }
@@ -60,11 +67,12 @@ namespace Pizzaria
                 lblPrice.Content = $"Price: {menu[listBoxPizzas.SelectedIndex].SmallPrice}";
             else if (checkBox_Medium.IsChecked == true)
                 lblPrice.Content = $"Price: {menu[listBoxPizzas.SelectedIndex].MediumPrice}";
-            else
+            else if(checkBox_Large.IsChecked == true)
                 lblPrice.Content = $"Price: {menu[listBoxPizzas.SelectedIndex].LargePrice}";
+
         }
 
-        #region Checkboxes
+        #region Checkboxes Pizza
         private void checkBox_Small_Checked(object sender, RoutedEventArgs e)
         {
             checkBox_Small.IsEnabled = false;
@@ -139,6 +147,69 @@ namespace Pizzaria
         {
             BasketWindow bw = new BasketWindow();
             bw.Show();
+        }
+
+        private void brnAddDrinkToBasket_Click(object sender, RoutedEventArgs e)
+        {
+            double currentPrice;
+            if (checkBox_SmallDrink.IsChecked == true)
+                currentPrice = Menu.drinkMenu[listBoxDrinks.SelectedIndex].SmallPrice;
+            else if (checkBox_MediumDrink.IsChecked == true)
+                currentPrice = Menu.drinkMenu[listBoxDrinks.SelectedIndex].MediumPrice;
+            else
+                currentPrice = Menu.drinkMenu[listBoxDrinks.SelectedIndex].LargePrice;
+
+            Basket.drinkBasket.Add(new Drink(Menu.drinkMenu[listBoxDrinks.SelectedIndex].Name, currentPrice));
+        }
+
+        #region Checkboxes drinks
+        private void checkBox_SmallDrink_Checked(object sender, RoutedEventArgs e)
+        {
+            checkBox_SmallDrink.IsEnabled = false;
+            checkBox_MediumDrink.IsEnabled = true;
+            checkBox_LargeDrink.IsEnabled = true;
+
+            checkBox_MediumDrink.IsChecked = false;
+            checkBox_LargeDrink.IsChecked = false;
+            SetPriceLabelDrink();
+        }
+
+        private void checkBox_MediumDrink_Checked(object sender, RoutedEventArgs e)
+        {
+            checkBox_SmallDrink.IsEnabled = true;
+            checkBox_MediumDrink.IsEnabled = false;
+            checkBox_LargeDrink.IsEnabled = true;
+
+            checkBox_SmallDrink.IsChecked = false;
+            checkBox_LargeDrink.IsChecked = false;
+            SetPriceLabelDrink();
+        }
+
+        private void checkBox_LargeDrink_Checked(object sender, RoutedEventArgs e)
+        {
+            checkBox_SmallDrink.IsEnabled = true;
+            checkBox_MediumDrink.IsEnabled = true;
+            checkBox_LargeDrink.IsEnabled = false;
+
+            checkBox_SmallDrink.IsChecked = false;
+            checkBox_MediumDrink.IsChecked = false;
+            SetPriceLabelDrink();
+        }
+        #endregion
+
+        private void listBoxDrinks_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            SetPriceLabel();
+        }
+
+        private void SetPriceLabelDrink()
+        {
+            if (checkBox_SmallDrink.IsChecked == true)
+                lblDrinkPrice.Content = $"Price: {Menu.drinkMenu[listBoxDrinks.SelectedIndex].SmallPrice}";
+            else if (checkBox_MediumDrink.IsChecked == true)
+                lblDrinkPrice.Content = $"Price: {Menu.drinkMenu[listBoxDrinks.SelectedIndex].MediumPrice}";
+            else if(checkBox_LargeDrink.IsChecked == true)
+                lblDrinkPrice.Content = $"Price: {Menu.drinkMenu[listBoxDrinks.SelectedIndex].LargePrice}";
         }
     }
 }

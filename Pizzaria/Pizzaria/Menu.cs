@@ -24,13 +24,13 @@ namespace Pizzaria
 
         public static List<Drink> drinkMenu = new List<Drink>()
         {
-            new Drink("Coca Cola"),
-            new Drink("Sprite"),
-            new Drink("Fanta"),
-            new Drink("7Up"),
-            new Drink("Milk"),
-            new Drink("Water"),
-            new Drink("Salty Water")
+            new Drink("Coca Cola", 0),
+            new Drink("Sprite", 0),
+            new Drink("Fanta", 0),
+            new Drink("7Up", 0),
+            new Drink("Milk", 0),
+            new Drink("Water", 0),
+            new Drink("Salty Water", 0)
         };
     }
 }
