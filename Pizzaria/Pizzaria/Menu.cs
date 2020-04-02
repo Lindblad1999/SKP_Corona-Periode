@@ -21,5 +21,16 @@ namespace Pizzaria
             new Pizza(new List<Ingredients> {Ingredients.Cheese, Ingredients.Corn, Ingredients.Jalapeno, Ingredients.Mushroom
             , Ingredients.Olives, Ingredients.Pinapple, Ingredients.Tomato}, 15, "PlsDontBeVegan")
         };
+
+        public static List<Drink> drinkMenu = new List<Drink>()
+        {
+            new Drink("Coca Cola"),
+            new Drink("Sprite"),
+            new Drink("Fanta"),
+            new Drink("7Up"),
+            new Drink("Milk"),
+            new Drink("Water"),
+            new Drink("Salty Water")
+        };
     }
 }

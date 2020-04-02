@@ -7,14 +7,14 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <ListBox x:Name="listBoxPizzas" Margin="402,30,190,10" Background="#FFF0FB01" SelectionChanged="listBoxPizzas_SelectionChanged"/>
+        <ListBox x:Name="listBoxPizzas" Margin="402,30,190,45" Background="#FFF0FB01" SelectionChanged="listBoxPizzas_SelectionChanged"/>
         <CheckBox x:Name="checkBox_Small" Content="Small" HorizontalAlignment="Left" Margin="607,10,0,0" VerticalAlignment="Top" Checked="checkBox_Small_Checked"/>
         <CheckBox x:Name="checkBox_Medium" Content="Medium" HorizontalAlignment="Left" Margin="607,30,0,0" VerticalAlignment="Top" Checked="checkBox_Medium_Checked"/>
         <CheckBox x:Name="checkBox_Large" Content="Large" HorizontalAlignment="Left" Margin="607,50,0,0" VerticalAlignment="Top" Checked="checkBox_Large_Checked"/>
         <ListBox x:Name="listBoxIngredients" Margin="607,99,10,45" Background="#FF00D814"/>
-        <Label x:Name="lblMenu" Content="Menu:" HorizontalAlignment="Left" Margin="402,4,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblMenu" Content="Pizzas:" HorizontalAlignment="Left" Margin="402,4,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblIngredients" Content="Ingredients:" HorizontalAlignment="Left" Margin="607,70,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblPrice" Content="Price:" HorizontalAlignment="Left" Margin="607,379,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblPrice" Content="Price:" HorizontalAlignment="Left" Margin="407,379,0,0" VerticalAlignment="Top"/>
         <Button x:Name="brnAddToBasket" Content="Add to basket" HorizontalAlignment="Left" Margin="317,379,0,10" Width="80" Click="brnAddToBasket_Click"/>
         <Button x:Name="btnEditPizza" Content="Edit" HorizontalAlignment="Left" Margin="317,344,0,45" Width="80" Click="btnEditPizza_Click"/>
         <Button x:Name="btnViewBasket" Content="View Basket" HorizontalAlignment="Left" Margin="226,344,0,0" VerticalAlignment="Top" Width="86" Height="65" Click="btnViewBasket_Click"/>

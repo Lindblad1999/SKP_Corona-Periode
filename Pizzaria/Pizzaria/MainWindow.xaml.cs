@@ -31,6 +31,7 @@ namespace Pizzaria
             {
                 listBoxPizzas.Items.Add(pizza.Name);
             }
+
             listBoxPizzas.SelectedIndex = 0;
             checkBox_Medium.IsChecked = true;
         }

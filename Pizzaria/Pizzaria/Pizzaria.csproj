@@ -59,6 +59,7 @@
     <Compile Include="BasketWindow.xaml.cs">
       <DependentUpon>BasketWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Drink.cs" />
     <Compile Include="EditWindow.xaml.cs">
       <DependentUpon>EditWindow.xaml</DependentUpon>
     </Compile>
