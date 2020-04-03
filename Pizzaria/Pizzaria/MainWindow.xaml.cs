@@ -107,6 +107,11 @@ namespace Pizzaria
         }
         #endregion
 
+        /// <summary>
+        /// Adds the selected pizza to the basket
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void brnAddToBasket_Click(object sender, RoutedEventArgs e)
         {
             double currentPrice;
@@ -143,12 +148,22 @@ namespace Pizzaria
             ew.Show();
         }
 
+        /// <summary>
+        /// Opens a new instance of the basket window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnViewBasket_Click(object sender, RoutedEventArgs e)
         {
             BasketWindow bw = new BasketWindow();
             bw.Show();
         }
 
+        /// <summary>
+        /// Adds the selected drink to the basket
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void brnAddDrinkToBasket_Click(object sender, RoutedEventArgs e)
         {
             double currentPrice;
@@ -197,11 +212,19 @@ namespace Pizzaria
         }
         #endregion
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void listBoxDrinks_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             SetPriceLabel();
         }
 
+        /// <summary>
+        /// Changes the drink price label according to which size has been chosen
+        /// </summary>
         private void SetPriceLabelDrink()
         {
             if (checkBox_SmallDrink.IsChecked == true)

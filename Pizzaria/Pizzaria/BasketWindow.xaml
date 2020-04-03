@@ -15,6 +15,7 @@
         <ListBox x:Name="listBoxDrinks" HorizontalAlignment="Left" Height="330" Margin="127,10,0,0" VerticalAlignment="Top" Width="200" SelectionChanged="listBoxDrinks_SelectionChanged"/>
         <Label x:Name="lblCurrentDrinkPrice" Content="Price: " HorizontalAlignment="Left" Margin="127,345,0,0" VerticalAlignment="Top" Height="31" Width="120"/>
         <Button x:Name="btnRemoveDrink" Content="Remove" HorizontalAlignment="Left" Margin="127,381,0,0" VerticalAlignment="Top" Width="200" Height="28" Click="btnRemoveDrink_Click"/>
+        <Label x:Name="lblDiscount" Content="" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="112" Height="54"/>
 
     </Grid>
 </Window>

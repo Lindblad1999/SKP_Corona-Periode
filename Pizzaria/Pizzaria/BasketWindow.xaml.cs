@@ -21,6 +21,7 @@ namespace Pizzaria
     public partial class BasketWindow : Window
     {
         private double totalPrice = 0;
+        private bool discount = false;
 
         public BasketWindow()
         {
@@ -42,7 +43,28 @@ namespace Pizzaria
                 totalPrice += drink.CurrentPrice;
             }
 
+            Discount();
             lblTotalPrice.Content = $"Total Price: {totalPrice.ToString()}";
+        }
+
+        /// <summary>
+        /// This checks for, and applies or removes the discount
+        /// </summary>
+        private void Discount()
+        {
+            if (Basket.basket.Count >= 2 && Basket.drinkBasket.Count >= 2 && !discount)
+            {
+                totalPrice -= 15;
+                lblDiscount.Content = "Discount added!";
+                discount = true;
+            }
+
+            if (Basket.basket.Count < 2 || Basket.drinkBasket.Count < 2 && discount)
+            {
+                totalPrice += 15;
+                lblDiscount.Content = "";
+                discount = false;
+            }
         }
 
         /// <summary>
@@ -63,10 +85,15 @@ namespace Pizzaria
                 lblCurrentPizzaPrice.Content = $"Price: {Basket.basket[listBoxPizzas.SelectedIndex].CurrentPrice}";
 
             }
-                lblTotalPrice.Content = $"Total Price: {totalPrice.ToString()}";
+            lblTotalPrice.Content = $"Total Price: {totalPrice.ToString()}";
 
         }
 
+        /// <summary>
+        /// Button that removes the selected item in the pizzas listbox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnRemove_Click(object sender, RoutedEventArgs e)
         {
             if (listBoxPizzas.Items.Count > 0)
@@ -95,19 +122,30 @@ namespace Pizzaria
                     lblCurrentPizzaPrice.Content = $"Price: {Basket.basket[listBoxPizzas.SelectedIndex].CurrentPrice}";
                 }
                 lblTotalPrice.Content = $"Total Price: {totalPrice.ToString()}";
+                Discount();
             }
         }
 
+        /// <summary>
+        /// Updates the price label according to the selected drinks price
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void listBoxDrinks_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(listBoxDrinks.Items.Count > 0)
+            if (listBoxDrinks.Items.Count > 0)
                 lblCurrentDrinkPrice.Content = $"Price: {Basket.drinkBasket[listBoxDrinks.SelectedIndex].CurrentPrice}";
             lblTotalPrice.Content = $"Total Price: {totalPrice.ToString()}";
         }
 
+        /// <summary>
+        /// Button that removes the selected item in the drinks listbox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnRemoveDrink_Click(object sender, RoutedEventArgs e)
         {
-            if(listBoxDrinks.Items.Count > 0)
+            if (listBoxDrinks.Items.Count > 0)
             {
                 Basket.drinkBasket.RemoveAt(listBoxDrinks.SelectedIndex);
                 listBoxPizzas.Items.Clear();
@@ -132,6 +170,7 @@ namespace Pizzaria
                     lblCurrentDrinkPrice.Content = $"Price: {Basket.drinkBasket[listBoxDrinks.SelectedIndex].CurrentPrice}";
                 }
                 lblTotalPrice.Content = $"Total Price: {totalPrice.ToString()}";
+                Discount();
             }
         }
     }

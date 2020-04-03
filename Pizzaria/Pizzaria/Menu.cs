@@ -22,6 +22,9 @@ namespace Pizzaria
             , Ingredients.Olives, Ingredients.Pinapple, Ingredients.Tomato}, 15, "PlsDontBeVegan")
         };
 
+        /// <summary>
+        /// List of all the drinks, that make up the Drinks menu
+        /// </summary>
         public static List<Drink> drinkMenu = new List<Drink>()
         {
             new Drink("Coca Cola", 0),
