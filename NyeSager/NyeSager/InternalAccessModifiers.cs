@@ -17,7 +17,7 @@ namespace NyeSager
 
     internal class Complex
     {
-
+        
         int real;
         int img;
 
