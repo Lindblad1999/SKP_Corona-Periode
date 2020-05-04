@@ -45,18 +45,22 @@ namespace BankManageMentSystem
             currentUser.Dob = (DateTime)DatePickerDate.SelectedDate;
             currentUser.Password = txtBoxPassword.Text;
 
-            SuccessCriteria();
-        }
 
-        private void SuccessCriteria()
-        {
-            if (currentUser.Password == txtBoxConfirmPassword.Text) passwordSuccess = true;
-            if (currentUser.Username != String.Empty) usernameSuccess = true;
-            if (currentUser.Firstname != String.Empty) firstnameSuccess = true;
-            if (currentUser.Lastname != String.Empty) lastnameSuccess = true;
-            if (currentUser.City != String.Empty) citySuccess = true;
-            if (currentUser.Address != String.Empty) addressSuccess = true;
-            if (currentUser.Dob != DateTime.Now) dobSuccess = true;
+            if (SQLTools.SQLCreateUser.CheckExistingUsername(currentUser.Username)) { MessageBox.Show("Username already exists"); }
+            else
+            {
+                    SQLTools.SQLCreateUser.InsertNewUserInDB(currentUser);
+                try
+                {
+                    LoginWindow newLoginWindow = new LoginWindow();
+                    newLoginWindow.Show();
+                    this.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}");
+                }
+            }
         }
 
         private void FailMessage()
