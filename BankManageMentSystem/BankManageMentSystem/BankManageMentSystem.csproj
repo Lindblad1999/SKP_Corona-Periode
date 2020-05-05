@@ -58,6 +58,9 @@
     <Compile Include="CreateUserWindow.xaml.cs">
       <DependentUpon>CreateUserWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SQLTools\ConnectToSQL.cs" />
     <Compile Include="SQLTools\SQLCreateUser.cs" />
     <Compile Include="SQLTools\SQLLogin.cs" />
@@ -78,6 +81,10 @@
       <DependentUpon>LoginWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

@@ -31,16 +31,16 @@ namespace BankManageMentSystem.SQLTools
         public static void InsertNewUserInDB(User currentUser) 
         {
             //Need autoincrement on userID
-            string command = "INSERT INTO Logins VALUES (2, "+currentUser.Username+", "+currentUser.Password+", 0);";
-            string command2 = "INSERT INTO Users VALUES (2, "+ currentUser.Firstname +");";
+            string command = "INSERT INTO Logins VALUES (4, '"+currentUser.Username+"', '"+currentUser.Password+"', 0);";
+            string command2 = "INSERT INTO Users VALUES ('"+ currentUser.Firstname +"');";
 
             using (SqlConnection connection = new SqlConnection(ConnectToSQL.connStr.ConnectionString))
             {
                 SqlCommand sqlCmd = new SqlCommand(command, connection);
                 SqlCommand sqlCmd2 = new SqlCommand(command2, connection);
                 connection.Open();
-                sqlCmd.ExecuteNonQuery();
                 sqlCmd2.ExecuteNonQuery();
+                sqlCmd.ExecuteNonQuery();
                 connection.Close();
             }
         }

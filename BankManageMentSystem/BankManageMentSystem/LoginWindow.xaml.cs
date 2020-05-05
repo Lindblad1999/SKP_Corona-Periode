@@ -32,7 +32,9 @@ namespace BankManageMentSystem
         {
             if (SQLLogin.CheckLogin(txtBoxUsername.Text, passwordBoxPassword.Password))
             {
-                MessageBox.Show("Success");
+                MainWindow m = new MainWindow();
+                m.Show();
+                this.Close();
             }
             else
                 MessageBox.Show("Failure");
