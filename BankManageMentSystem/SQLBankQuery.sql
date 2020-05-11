@@ -13,3 +13,6 @@ CREATE TABLE Logins(
 
 INSERT INTO Users VALUES('Emil');
 INSERT INTO Logins VALUES(1, 'admin', 'password', 1);
+
+SELECT * FROM Users;
+SELECT * FROM Logins;
