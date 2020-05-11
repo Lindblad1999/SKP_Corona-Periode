@@ -2,23 +2,47 @@
 
 namespace NyeSager
 {
+    #region Polymorphism
+    class Animal
+    {
+        public void animalSound()
+        {
+            Console.WriteLine("the animal makes a sound");
+        }
+    }
+
+    class Pig : Animal
+    {
+        public void animalSound()
+        {
+            Console.WriteLine("The pig says: idk");
+        }
+    }
+
+    class Dog : Animal
+    {
+        public void animalSound()
+        {
+            Console.WriteLine("The dog says: wuf");
+        }
+    }
+    #endregion
+
+
     class Program
     {
         static void Main(string[] args)
         {
-            FunctionPointer.FunctionPointer1 = FunctionPointer.Display;
-            FunctionPointer.FunctionPointer2 = FunctionPointer.Display;
-            FunctionPointer.FunctionPointer1("Pointer1");
-            FunctionPointer.FunctionPointer2("Pointer2", "pointer3");
-            Console.ReadKey();
+            #region Polymorphism
+            Animal myAnimal = new Animal();
+            Animal myPig = new Pig();
+            Animal myDog = new Dog();
 
-            NumberChanger nc1 = new NumberChanger(Delegate.AddNum);
-            NumberChanger nc2 = new NumberChanger(Delegate.MultNum);
+            myAnimal.animalSound();
+            myPig.animalSound();
+            myDog.animalSound();
+            #endregion
 
-            nc1(25);
-            Console.WriteLine("Value of Num: {0}", Delegate.getNum());
-            nc2(5);
-            Console.WriteLine("Value of Num: {0}", Delegate.getNum());
             Console.ReadKey();
         }
     }
