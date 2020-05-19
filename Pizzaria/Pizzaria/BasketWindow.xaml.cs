@@ -38,7 +38,7 @@ namespace Pizzaria
             foreach (Pizza pizza in Basket.basket)
             {
                 //Adds the current pizzas name to to the pizza list box
-                listBoxPizzas.Items.Add(pizza.Name);
+                listBoxPizzas.Items.Add($"{pizza.Name} {pizza.CurrentPrice} kr.");
                 //adds the current pizzas price to the total price
                 totalPrice += pizza.CurrentPrice;
             }
@@ -47,7 +47,7 @@ namespace Pizzaria
             foreach (Drink drink in Basket.drinkBasket)
             {
                 //adds the name of the current drinks name to the drinks list box
-                listBoxDrinks.Items.Add(drink.Name);
+                listBoxDrinks.Items.Add($"{drink.Name} {drink.CurrentPrice} kr.");
                 //adds the current drinks price to the total price
                 totalPrice += drink.CurrentPrice;
             }
@@ -135,7 +135,7 @@ namespace Pizzaria
                 foreach (Pizza pizza in Basket.basket)
                 {
                     //adds the name of the current pizza to the pizza listbox
-                    listBoxPizzas.Items.Add(pizza.Name);
+                    listBoxPizzas.Items.Add($"{pizza.Name} {pizza.CurrentPrice} kr.");
                     //adds the current pizzas price to the total price
                     totalPrice += pizza.CurrentPrice;
                 }
@@ -143,7 +143,7 @@ namespace Pizzaria
                 foreach (Drink drink in Basket.drinkBasket)
                 {
                     //adds the name of the drink, to the drinks listbox
-                    listBoxDrinks.Items.Add(drink.Name);
+                    listBoxDrinks.Items.Add($"{drink.Name} {drink.CurrentPrice} kr.");
                     //adds the price of the current drink to the total price
                     totalPrice += drink.CurrentPrice;
                 }
@@ -201,7 +201,7 @@ namespace Pizzaria
                 foreach (Pizza pizza in Basket.basket)
                 {
                     //adds the name of the current drink to the drink listbox
-                    listBoxPizzas.Items.Add(pizza.Name);
+                    listBoxPizzas.Items.Add($"{pizza.Name} {pizza.CurrentPrice} kr.");
                     //adds the current drinks price to the total price
                     totalPrice += pizza.CurrentPrice;
                 }
@@ -209,7 +209,7 @@ namespace Pizzaria
                 foreach (Drink drink in Basket.drinkBasket)
                 {
                     //adds the name of the drink, to the drinks listbox
-                    listBoxDrinks.Items.Add(drink.Name);
+                    listBoxDrinks.Items.Add($"{drink.Name} {drink.CurrentPrice} kr.");
                     //adds the price of the current drink to the total price
                     totalPrice += drink.CurrentPrice;
                 }
