@@ -20,4 +20,9 @@ namespace Pizzaria.Enums
         Pepper,
         Corn
     }
+    
+    public static class IngredientPrices
+    {
+        public static int[] prices = { 5, 5, 6, 3, 4, 5, 3, 4, 6, 5, 5 };
+    }
 }

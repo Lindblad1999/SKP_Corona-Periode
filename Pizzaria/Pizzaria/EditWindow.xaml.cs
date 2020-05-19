@@ -48,9 +48,9 @@ namespace Pizzaria
         {
             //adds the selected ingredient to the current pizzas ingredients
             pizza.Ingredients.Add((Ingredients)listBoxAllIngredients.SelectedIndex);
+            //adds the ingredients price to the total price
+            pizza.CurrentPrice += IngredientPrices.prices[listBoxAllIngredients.SelectedIndex];
             UpdateListBoxes();
-            //adds a value of 5 to the current pizzas prize
-            pizza.CurrentPrice += 5;
             //updates the price label to the pizzas current price
             lblPrice.Content = $"Price: {pizza.CurrentPrice}";
 
@@ -69,11 +69,11 @@ namespace Pizzaria
             //checks if the pizza has ingredients in it already
             if (listBoxCurrentIngredients.Items.Count > 0)
             {
+                //removes the value of the selected ingredient form the total price
+                pizza.CurrentPrice -= int.Parse(listBoxCurrentIngredients.SelectedItem.ToString().Split(' ')[1]);
                 //removes the ingredient selected
                 pizza.Ingredients.RemoveAt(listBoxCurrentIngredients.SelectedIndex);
                 UpdateListBoxes();
-                //removes a value of 5 from the pizzas price
-                pizza.CurrentPrice -= 5;
                 //updates the price label to the pizzas current price
                 lblPrice.Content = $"Price: {pizza.CurrentPrice}";
 
@@ -93,16 +93,18 @@ namespace Pizzaria
             listBoxCurrentIngredients.Items.Clear();
 
             //loops through all the ingredients in the Ingrediets enum, and adds them to the all ingredients listbox
+            int counter = 0;
             foreach (string s in Enum.GetNames(typeof(Ingredients)))
             {
-                listBoxAllIngredients.Items.Add(s);
+                listBoxAllIngredients.Items.Add($"{s} {IngredientPrices.prices[counter]} kr.");
+                counter++;
             }
-
+            counter = 0;
             //loops through all the ingredients in current pizzas list of ingredients and adds them to the current 
             //ingredients listbox
             foreach (Ingredients s in pizza.Ingredients)
             {
-                listBoxCurrentIngredients.Items.Add(s.ToString());
+                listBoxCurrentIngredients.Items.Add($"{s.ToString()} {IngredientPrices.prices[(int)s]} kr.");
             }
         }
 
