@@ -16,6 +16,8 @@
         <Label x:Name="lblCurrentDrinkPrice" Content="Price: " HorizontalAlignment="Left" Margin="127,345,0,0" VerticalAlignment="Top" Height="31" Width="120"/>
         <Button x:Name="btnRemoveDrink" Content="Remove" HorizontalAlignment="Left" Margin="127,381,0,0" VerticalAlignment="Top" Width="200" Height="28" Click="btnRemoveDrink_Click"/>
         <Label x:Name="lblDiscount" Content="" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="112" Height="54"/>
+        <Button x:Name="btnBuy" Content="Buy" HorizontalAlignment="Left" Margin="10,90,0,0" VerticalAlignment="Top" Width="92" Height="60" Click="btnBuy_Click"/>
+        <Button x:Name="btnBack" Content="Back" HorizontalAlignment="Left" Margin="10,173,0,0" VerticalAlignment="Top" Width="92" Height="60" Click="btnBack_Click"/>
 
     </Grid>
 </Window>

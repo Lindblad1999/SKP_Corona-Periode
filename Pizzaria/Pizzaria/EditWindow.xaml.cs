@@ -25,12 +25,16 @@ namespace Pizzaria
         public EditWindow(Pizza pizza)
         {
             InitializeComponent();
+            //sets the local pizza to be the pizza passed in the constructor
             this.pizza = pizza;
+            //sets the pizza label to be the name of the pizza passed in the constructor
             lblPizzaName.Content = pizza.Name;
 
             UpdateListBoxes();
-            lblPrice.Content = $"Prce: {pizza.CurrentPrice}";
+            //sets the price label to be the price of the current pizzas price
+            lblPrice.Content = $"Price: {pizza.CurrentPrice}";
 
+            //sets the selected item of both list boxes to the first item as default
             listBoxAllIngredients.SelectedIndex = 0;
             listBoxCurrentIngredients.SelectedIndex = 0;
         }
@@ -42,10 +46,15 @@ namespace Pizzaria
         /// <param name="e"></param>
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
+            //adds the selected ingredient to the current pizzas ingredients
             pizza.Ingredients.Add((Ingredients)listBoxAllIngredients.SelectedIndex);
             UpdateListBoxes();
+            //adds a value of 5 to the current pizzas prize
             pizza.CurrentPrice += 5;
-            lblPrice.Content = $"Prce: {pizza.CurrentPrice}";
+            //updates the price label to the pizzas current price
+            lblPrice.Content = $"Price: {pizza.CurrentPrice}";
+
+            //sets the selected item of both list boxes to the first item as default
             listBoxCurrentIngredients.SelectedIndex = 0;
             listBoxAllIngredients.SelectedIndex = 0;
         }
@@ -57,12 +66,18 @@ namespace Pizzaria
         /// <param name="e"></param>
         private void btnRemove_Click(object sender, RoutedEventArgs e)
         {
+            //checks if the pizza has ingredients in it already
             if (listBoxCurrentIngredients.Items.Count > 0)
             {
+                //removes the ingredient selected
                 pizza.Ingredients.RemoveAt(listBoxCurrentIngredients.SelectedIndex);
                 UpdateListBoxes();
+                //removes a value of 5 from the pizzas price
                 pizza.CurrentPrice -= 5;
-                lblPrice.Content = $"Prce: {pizza.CurrentPrice}";
+                //updates the price label to the pizzas current price
+                lblPrice.Content = $"Price: {pizza.CurrentPrice}";
+
+                //sets the selected item of both list boxes to the first item as default
                 listBoxCurrentIngredients.SelectedIndex = 0;
                 listBoxAllIngredients.SelectedIndex = 0;
             }
@@ -73,14 +88,18 @@ namespace Pizzaria
         /// </summary>
         private void UpdateListBoxes()
         {
+            //Clears the content of both list boxes
             listBoxAllIngredients.Items.Clear();
             listBoxCurrentIngredients.Items.Clear();
 
+            //loops through all the ingredients in the Ingrediets enum, and adds them to the all ingredients listbox
             foreach (string s in Enum.GetNames(typeof(Ingredients)))
             {
                 listBoxAllIngredients.Items.Add(s);
             }
 
+            //loops through all the ingredients in current pizzas list of ingredients and adds them to the current 
+            //ingredients listbox
             foreach (Ingredients s in pizza.Ingredients)
             {
                 listBoxCurrentIngredients.Items.Add(s.ToString());
@@ -94,6 +113,7 @@ namespace Pizzaria
         /// <param name="e"></param>
         private void btnAddToBasket_Click(object sender, RoutedEventArgs e)
         {
+            //adds the pizza to the basket list and closes the window
             Basket.basket.Add(pizza);
             this.Close();
         }
@@ -105,6 +125,7 @@ namespace Pizzaria
         /// <param name="e"></param>
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
+            //closes the window
             this.Close();
         }
     }

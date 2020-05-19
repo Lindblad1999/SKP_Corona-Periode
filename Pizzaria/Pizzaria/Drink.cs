@@ -7,7 +7,7 @@ using Pizzaria.Enums;
 
 namespace Pizzaria
 {
-    public class Drink : Food
+    public class Drink
     {
         private string name;
         private double smallPrice;

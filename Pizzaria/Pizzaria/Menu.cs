@@ -19,7 +19,7 @@ namespace Pizzaria
             new Pizza(new List<Ingredients> {Ingredients.Tomato, Ingredients.Beef, Ingredients.Jalapeno, Ingredients.Corn}, 80, "SoundsNasty"),
             new Pizza(new List<Ingredients> {Ingredients.Cheese, Ingredients.Chicken, Ingredients.Mushroom, Ingredients.Pepper}, 65, "YouGonnaPuke"),
             new Pizza(new List<Ingredients> {Ingredients.Cheese, Ingredients.Corn, Ingredients.Jalapeno, Ingredients.Mushroom
-            , Ingredients.Olives, Ingredients.Pinapple, Ingredients.Tomato}, 15, "PlsDontBeVegan")
+            , Ingredients.Olives, Ingredients.Pinapple, Ingredients.Tomato}, 70, "PlsDontBeVegan")
         };
 
         /// <summary>
