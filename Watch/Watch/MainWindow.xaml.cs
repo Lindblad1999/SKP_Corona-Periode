@@ -30,6 +30,7 @@ namespace Watch
             DispatcherTimer timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
             {
                 this.dateText.Text = DateTime.Now.ToString("HH:mm:ss");
+                this.textBlockDate.Text = String.Format("{0:00}/{1:00}-{2:0000}", DateTime.Now.Day, DateTime.Now.Month, DateTime.Now.Year);
             }, this.Dispatcher);
 
             mw = new MyWatch();

@@ -10,7 +10,8 @@
         <TabControl HorizontalAlignment="Left" Height="400" Margin="10,10,0,0" VerticalAlignment="Top" Width="774">
             <TabItem x:Name="tabItemTime" Header="Time">
                 <Grid Background="#FFE5E5E5">
-                    <TextBlock x:Name="dateText" HorizontalAlignment="Left" Margin="229,109,0,0" TextWrapping="Wrap" Text="00:00:00" VerticalAlignment="Top" Height="103" Width="287" FontSize="72"/>
+                    <TextBlock x:Name="dateText" HorizontalAlignment="Left" Margin="200,109,0,0" TextWrapping="Wrap" Text="00:00:00" VerticalAlignment="Top" Height="89" Width="287" FontSize="72"/>
+                    <TextBlock x:Name="textBlockDate" HorizontalAlignment="Left" Margin="200,203,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="44" Width="287"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="tabItemStopwatch" Header="Stopwatch">
@@ -45,6 +46,11 @@
                         </Button.Resources>
                     </Button>
                     <DataGrid HorizontalAlignment="Left" Height="308" Margin="10,24,0,0" VerticalAlignment="Top" Width="314"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="tabItemTimer" Header="Timer">
+                <Grid Background="#FFE5E5E5">
+                    
                 </Grid>
             </TabItem>
         </TabControl>
