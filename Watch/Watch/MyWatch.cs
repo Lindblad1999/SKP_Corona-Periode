@@ -3,15 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
+using System.Windows.Threading;
 using Watch.Watches;
 
 namespace Watch
 {
     public class MyWatch
     {
-        public MyTimer myTimer = new MyTimer();
-        public MyStopwatch myStopwatch = new MyStopwatch();
+        public MyWatch(Dispatcher dispatcher, TextBlock timerTextBlock)
+        {
+            myTimer = new MyTimer(dispatcher, timerTextBlock);
+        }
 
-        public MyWatch() { }
+        public MyTimer myTimer;
+        public MyStopwatch myStopwatch = new MyStopwatch();
     }
 }
