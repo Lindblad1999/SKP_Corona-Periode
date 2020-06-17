@@ -14,74 +14,89 @@ namespace Watch.Watches
 {
     public class MyTimer : Watch
     {
-        private Dispatcher dispatcher;
         private TextBlock tb;
-        private TimeSpan ts;
-        private DateTime endTime;
-        private bool isRunning;
+        private Dispatcher dispatcher;
         private DispatcherTimer timer;
+        private TimeSpan targetTime;
+        private Stopwatch stopwatch;
+
+        public TimeSpan TargetTime
+        {
+            get => this.targetTime;
+            set 
+            {
+                ///checks if the addition or reduction made will bring the targettime under 0, or over 24, if not it
+                ///allows it to happen
+                if (value.Hours >= 0 && value.Minutes >= 0 && value.Seconds >= 0 && value.Days <= 0)
+                    this.targetTime = value;
+            }
+        }
 
         public MyTimer(Dispatcher dispatcher, TextBlock tb)
         {
             this.dispatcher = dispatcher;
             this.tb = tb;
-            isRunning = false;
+            targetTime = new TimeSpan(0, 0, 0);
+            stopwatch = new Stopwatch();
         }
 
-
+        /// <summary>
+        /// Stops and clears the elapsed time in the stopwatch, and sets the targettime back to zer
+        /// </summary>
         public override void Reset()
         {
-            throw new NotImplementedException();
+            stopwatch.Restart();
+            targetTime = new TimeSpan(0, 0, 0);
         }
-
+        /// <summary>
+        /// Starts the stopwatch, and creates a new DispatcherTimer, for handling the countdown update.
+        /// </summary>
+        /// <param name="tb"></param>
         public override void Start(TextBlock tb)
         {
-            isRunning = true;
-            this.tb = tb;
-            endTime = endTime.Add(new TimeSpan(DateTime.Now.Day - 1, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second));
-            endTime = endTime.AddMonths(DateTime.Now.Month - 1);
-            endTime = endTime.AddYears(DateTime.Now.Year - 1);
-
+            stopwatch.Start();
             timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
-            {
-                ts = endTime - DateTime.Now;
-                tb.Text = String.Format("{0:00}:{1:00}:{2:00}", ts.Hours, ts.Minutes, ts.Seconds);
-            }, dispatcher);
+              {
+                  UpdateTextBlock();
+              }, dispatcher);
 
             timer.Tick += new EventHandler(timer_Tick);
-
         }
-
+        /// <summary>
+        /// EventHandler that gets called every tick
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void timer_Tick(object sender, EventArgs e)
         {
-            if (ts.Hours <= 0 && ts.Minutes <= 0 && ts.Seconds <= 0)
+            ///Checks if the stopwatch has reached the targetTime, if so it stops and clears the elapsed time on the stopwatch
+            if (TargetTime <= stopwatch.Elapsed)
             {
-                timer.Stop();
-                ts = new TimeSpan();
-                endTime = new DateTime();
-                isRunning = false;
+                stopwatch.Reset();
+                targetTime = new TimeSpan(0, 0, 0);
+                UpdateTextBlock();
             }
         }
-
+        /// <summary>
+        /// Pauses the stopwatch
+        /// </summary>
         public override void Stop()
         {
-            throw new NotImplementedException();
+            stopwatch.Stop();
         }
-
+        /// <summary>
+        /// Updates the the content of the textBlock, to the current time left on the timer 
+        /// </summary>
         private void UpdateTextBlock()
         {
-            tb.Text = String.Format("{0:00}:{1:00}:{2:00}", endTime.Hour, endTime.Minute, endTime.Second);
+            TimeSpan tempTimeSpan = TargetTime - stopwatch.Elapsed;
+            tb.Text = String.Format("{0:00}:{1:00}:{2:00}", tempTimeSpan.Hours, tempTimeSpan.Minutes, tempTimeSpan.Seconds);
         }
-
-        public void AlterHours(int hours)
-        {
-            if (endTime.Hour + hours < 0)
-                return;
-            endTime = endTime.AddHours(hours); 
-            if (!isRunning) 
-                UpdateTextBlock(); 
-        }
-        public void AlterMinutes(int minutes) { endTime = endTime.AddMinutes(minutes); if (!isRunning) UpdateTextBlock(); }
-        public void AlterSeconds(int seconds) { endTime = endTime.AddSeconds(seconds); if (!isRunning) UpdateTextBlock(); }
+        /// <summary>
+        /// These three Alter methods takes in a parameter of time, and adds that to the target time
+        /// </summary>
+        public void AlterHours(int hours) { TargetTime = TargetTime.Add(new TimeSpan(hours, 0, 0)); UpdateTextBlock(); }
+        public void AlterMinutes(int minutes) { TargetTime = TargetTime.Add(new TimeSpan(0, minutes, 0)); UpdateTextBlock(); }
+        public void AlterSeconds(int seconds) { TargetTime = TargetTime.Add(new TimeSpan(0, 0, seconds)); UpdateTextBlock(); }
     }
 }

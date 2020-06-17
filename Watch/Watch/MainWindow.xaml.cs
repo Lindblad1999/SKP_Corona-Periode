@@ -64,18 +64,28 @@ namespace Watch
             mw.myTimer.Start(textBlockTimer);
         }
 
+        private void btnStopTimer_Click(object sender, RoutedEventArgs e)
+        {
+            mw.myTimer.Stop();
+        }
+
+        private void btnResetTimer_Click(object sender, RoutedEventArgs e)
+        {
+            mw.myTimer.Reset();
+        }
+
         #region AddAndSubtractTimeButtons
         private void btnTenHoursPlus_Click(object sender, RoutedEventArgs e) { mw.myTimer.AlterHours(10); }
 
-        private void btnOneHoursPlus_Click(object sender, RoutedEventArgs e){mw.myTimer.AlterHours(1);}
+        private void btnOneHoursPlus_Click(object sender, RoutedEventArgs e) { mw.myTimer.AlterHours(1); }
 
-        private void btnTenMinutesPlus_Click(object sender, RoutedEventArgs e){mw.myTimer.AlterMinutes(10);}
+        private void btnTenMinutesPlus_Click(object sender, RoutedEventArgs e) { mw.myTimer.AlterMinutes(10); }
 
-        private void btnOneMinutePlus_Click(object sender, RoutedEventArgs e){mw.myTimer.AlterMinutes(1);}
+        private void btnOneMinutePlus_Click(object sender, RoutedEventArgs e) { mw.myTimer.AlterMinutes(1); }
 
-        private void btnTenSecondsPlus_Click(object sender, RoutedEventArgs e){mw.myTimer.AlterSeconds(10);}
+        private void btnTenSecondsPlus_Click(object sender, RoutedEventArgs e) { mw.myTimer.AlterSeconds(10); }
 
-        private void btnOneSecondPlus_Click(object sender, RoutedEventArgs e){mw.myTimer.AlterSeconds(1);}
+        private void btnOneSecondPlus_Click(object sender, RoutedEventArgs e) { mw.myTimer.AlterSeconds(1); }
 
         private void btnTenHoursMinus_Click(object sender, RoutedEventArgs e) { mw.myTimer.AlterHours(-10); }
 
