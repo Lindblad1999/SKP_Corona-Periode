@@ -10,6 +10,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
 using Watch.Interfaces;
+using Watch.WatchObjects;
 
 namespace Watch.Watches
 {
@@ -18,31 +19,20 @@ namespace Watch.Watches
         private TextBlock tb;
         private Dispatcher dispatcher;
         private DispatcherTimer timer;
-        private TimeSpan targetTime;
-        private Stopwatch stopwatch;
 
         private ComboBox cbHours;
         private ComboBox cbMinutes;
         private ComboBox cbSeconds;
+        private ListBox listBoxTimers;
 
-        public TimeSpan TargetTime
-        {
-            get => this.targetTime;
-            set 
-            {
-                ///checks if the addition or reduction made will bring the targettime under 0, or over 24, if not it
-                ///allows it to happen
-                if (value.Hours >= 0 && value.Minutes >= 0 && value.Seconds >= 0 && value.Days <= 0)
-                    this.targetTime = value;
-            }
-        }
+        private List<Timer> timers;
 
-        public MyTimer(Dispatcher dispatcher, TextBlock tb)
+        public MyTimer(Dispatcher dispatcher, TextBlock tb, ListBox listBoxTimers)
         {
             this.dispatcher = dispatcher;
             this.tb = tb;
-            targetTime = new TimeSpan(0, 0, 0);
-            stopwatch = new Stopwatch();
+            this.listBoxTimers = listBoxTimers;
+            timers = new List<Timer>();
         }
 
         /// <summary>
@@ -53,6 +43,7 @@ namespace Watch.Watches
             stopwatch.Restart();
             targetTime = new TimeSpan(0, 0, 0);
         }
+
         /// <summary>
         /// Starts the stopwatch, and creates a new DispatcherTimer, for handling the countdown update.
         /// </summary>
@@ -64,9 +55,9 @@ namespace Watch.Watches
               {
                   UpdateTextBlock();
               }, dispatcher);
-
             timer.Tick += new EventHandler(timer_Tick);
         }
+
         /// <summary>
         /// EventHandler that gets called every tick
         /// </summary>
@@ -82,6 +73,7 @@ namespace Watch.Watches
                 UpdateTextBlock();
             }
         }
+
         /// <summary>
         /// Pauses the stopwatch
         /// </summary>
@@ -89,9 +81,11 @@ namespace Watch.Watches
         {
             stopwatch.Stop();
         }
+
         /// <summary>
         /// Updates the the content of the textBlock, to the current time left on the timer 
         /// </summary>
+        /// 
         private void UpdateTextBlock()
         {
             TimeSpan tempTimeSpan = TargetTime - stopwatch.Elapsed;

@@ -33,7 +33,7 @@ namespace Watch
                 this.textBlockDate.Text = String.Format("{0:00}/{1:00}-{2:0000}", DateTime.Now.Day, DateTime.Now.Month, DateTime.Now.Year);
             }, this.Dispatcher);
 
-            mw = new MyWatch(this.Dispatcher, textBlockTimer);
+            mw = new MyWatch(this.Dispatcher, textBlockTimer, listBoxTimers);
             mw.myTimer.Initialize(comboBoxTimerHours, comboBoxTimerMinutes, comboBoxTimerSeconds);
         }
 

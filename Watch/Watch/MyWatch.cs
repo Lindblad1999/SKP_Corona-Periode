@@ -11,9 +11,9 @@ namespace Watch
 {
     public class MyWatch
     {
-        public MyWatch(Dispatcher dispatcher, TextBlock timerTextBlock)
+        public MyWatch(Dispatcher dispatcher, TextBlock timerTextBlock, ListBox timerListBox)
         {
-            myTimer = new MyTimer(dispatcher, timerTextBlock);
+            myTimer = new MyTimer(dispatcher, timerTextBlock, timerListBox);
         }
 
         public MyTimer myTimer;

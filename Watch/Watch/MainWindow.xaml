@@ -60,6 +60,8 @@
                     <Button x:Name="btnTimerAddTime" Content="Add" HorizontalAlignment="Left" Margin="643,144,0,0" VerticalAlignment="Top" Width="55" Height="22" Click="btnTimerAddTime_Click"/>
                     <Button x:Name="btnTimerSubtractTime" Content="Subtract
 " HorizontalAlignment="Left" Margin="703,144,0,0" VerticalAlignment="Top" Width="55" Height="22" Click="btnTimerSubtractTime_Click"/>
+                    <Button x:Name="btnCreateNew" Content="New" HorizontalAlignment="Left" Margin="475,171,0,0" VerticalAlignment="Top" Width="53"/>
+                    <ListBox x:Name="listBoxTimers" HorizontalAlignment="Left" Height="328" Margin="10,34,0,0" VerticalAlignment="Top" Width="328"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="tebItemAlarm" Header="Alarm">
