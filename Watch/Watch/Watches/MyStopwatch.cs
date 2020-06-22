@@ -16,12 +16,14 @@ namespace Watch.Watches
         private Stopwatch stopWatch = new Stopwatch();
         private string startTime = string.Empty;
         private TextBlock tb;
+        private ListBox lb;
 
 
         public override void Reset()
         {
             stopWatch.Reset();
             tb.Text = "00:00:00:00";
+            lb.Items.Clear();
         }
 
         public override void Start(TextBlock tb)
@@ -50,6 +52,13 @@ namespace Watch.Watches
         public override void Stop()
         {
             stopWatch.Stop();
+        }
+
+        public void Lap(ListBox lb)
+        {
+            this.lb = lb;
+            lb.Items.Add(String.Format("{0:00}:{1:00}:{2:00},{3:00}",
+                stopWatch.Elapsed.Hours, stopWatch.Elapsed.Minutes, stopWatch.Elapsed.Seconds, stopWatch.Elapsed.Milliseconds));
         }
     }
 }

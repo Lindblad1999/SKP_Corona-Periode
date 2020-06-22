@@ -45,28 +45,21 @@
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <DataGrid HorizontalAlignment="Left" Height="308" Margin="10,24,0,0" VerticalAlignment="Top" Width="314"/>
+                    <ListBox x:Name="listBoxStopwatchLaps" HorizontalAlignment="Left" Height="352" Margin="10,10,0,0" VerticalAlignment="Top" Width="293"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="tabItemTimer" Header="Timer">
                 <Grid Background="#FFE5E5E5">
-                    <TextBlock x:Name="textBlockTimer" Margin="242,69,246.8,0" TextWrapping="Wrap" Text="00:00:00" VerticalAlignment="Top" Height="105" FontSize="72"/>
-                    <Button x:Name="btnStartTimer" Content="Start" HorizontalAlignment="Left" Margin="321,236,0,0" VerticalAlignment="Top" Width="112" Height="49" FontSize="18" Click="btnStartTimer_Click"/>
-                    <Button x:Name="btnTenHoursPlus" Content="↑" HorizontalAlignment="Left" Margin="242,48,0,0" VerticalAlignment="Top" Width="30" Height="32" FontSize="20" Click="btnTenHoursPlus_Click"/>
-                    <Button x:Name="btnOneHoursPlus" Content="↑" HorizontalAlignment="Left" Margin="287,48,0,0" VerticalAlignment="Top" Width="30" Height="32" FontSize="20" Click="btnOneHoursPlus_Click"/>
-                    <Button x:Name="btnTenMinutesPlus" Content="↑" HorizontalAlignment="Left" Margin="338,48,0,0" VerticalAlignment="Top" Width="30" Height="32" FontSize="20" Click="btnTenMinutesPlus_Click"/>
-                    <Button x:Name="btnOneMinutePlus" Content="↑" HorizontalAlignment="Left" Margin="382,48,0,0" VerticalAlignment="Top" Width="30" Height="32" FontSize="20" Click="btnOneMinutePlus_Click"/>
-                    <Button x:Name="btnTenSecondsPlus" Content="↑" HorizontalAlignment="Left" Margin="432,48,0,0" VerticalAlignment="Top" Width="30" Height="32" FontSize="20" Click="btnTenSecondsPlus_Click"/>
-                    <Button x:Name="btnOneSecondPlus" Content="↑" HorizontalAlignment="Left" Margin="475,48,0,0" VerticalAlignment="Top" Width="30" Height="32" FontSize="20" Click="btnOneSecondPlus_Click"/>
-                    <Button x:Name="btnTenHoursMinus" Content="↓" HorizontalAlignment="Left" Margin="242,162,0,0" VerticalAlignment="Top" Width="30" Height="32" FontSize="20" Click="btnTenHoursMinus_Click"/>
-                    <Button x:Name="btnOneHoursMinusPlus_Copy" Content="↓" HorizontalAlignment="Left" Margin="287,162,0,0" VerticalAlignment="Top" Width="30" Height="32" FontSize="20" Click="btnOneHoursMinusPlus_Copy_Click"/>
-                    <Button x:Name="btnTenMinutesMinus" Content="↓" HorizontalAlignment="Left" Margin="338,162,0,0" VerticalAlignment="Top" Width="30" Height="32" FontSize="20" Click="btnTenMinutesMinus_Click"/>
-                    <Button x:Name="btnOneMinuteMinus" Content="↓" HorizontalAlignment="Left" Margin="382,162,0,0" VerticalAlignment="Top" Width="30" Height="32" FontSize="20" Click="btnOneMinuteMinus_Click"/>
-                    <Button x:Name="btnTenSecondsMinus" Content="↓" HorizontalAlignment="Left" Margin="432,162,0,0" VerticalAlignment="Top" Width="30" Height="32" FontSize="20" Click="btnTenSecondsMinus_Click"/>
-                    <Button x:Name="btnOneSecondMinus" Content="↓" HorizontalAlignment="Left" Margin="475,162,0,0" VerticalAlignment="Top" Width="30" Height="32" FontSize="20" Click="btnOneSecondMinus_Click"/>
-                    <Button x:Name="btnStopTimer" Content="Stop" HorizontalAlignment="Left" Margin="256,290,0,0" VerticalAlignment="Top" Width="112" Height="49" FontSize="18" Click="btnStopTimer_Click"/>
-                    <Button x:Name="btnResetTimer" Content="Reset" HorizontalAlignment="Left" Margin="382,290,0,0" VerticalAlignment="Top" Width="112" Height="49" FontSize="18" Click="btnResetTimer_Click"/>
-
+                    <TextBlock x:Name="textBlockTimer" Margin="367,34,121,0" TextWrapping="Wrap" Text="00:00:00" VerticalAlignment="Top" Height="105" FontSize="72"/>
+                    <Button x:Name="btnStartTimer" Content="Start" HorizontalAlignment="Left" Margin="450,236,0,0" VerticalAlignment="Top" Width="112" Height="49" FontSize="18" Click="btnStartTimer_Click"/>
+                    <Button x:Name="btnStopTimer" Content="Stop" HorizontalAlignment="Left" Margin="392,290,0,0" VerticalAlignment="Top" Width="112" Height="49" FontSize="18" Click="btnStopTimer_Click"/>
+                    <Button x:Name="btnResetTimer" Content="Reset" HorizontalAlignment="Left" Margin="509,290,0,0" VerticalAlignment="Top" Width="112" Height="49" FontSize="18" Click="btnResetTimer_Click"/>
+                    <ComboBox x:Name="comboBoxTimerHours" HorizontalAlignment="Left" Margin="380,144,0,0" VerticalAlignment="Top" Width="53"/>
+                    <ComboBox x:Name="comboBoxTimerMinutes" HorizontalAlignment="Left" Margin="475,144,0,0" VerticalAlignment="Top" Width="53"/>
+                    <ComboBox x:Name="comboBoxTimerSeconds" HorizontalAlignment="Left" Margin="568,144,0,0" VerticalAlignment="Top" Width="53"/>
+                    <Button x:Name="btnTimerAddTime" Content="Add" HorizontalAlignment="Left" Margin="643,144,0,0" VerticalAlignment="Top" Width="55" Height="22" Click="btnTimerAddTime_Click"/>
+                    <Button x:Name="btnTimerSubtractTime" Content="Subtract
+" HorizontalAlignment="Left" Margin="703,144,0,0" VerticalAlignment="Top" Width="55" Height="22" Click="btnTimerSubtractTime_Click"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="tebItemAlarm" Header="Alarm">

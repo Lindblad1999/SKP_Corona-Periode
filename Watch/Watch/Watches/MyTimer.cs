@@ -9,16 +9,21 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
+using Watch.Interfaces;
 
 namespace Watch.Watches
 {
-    public class MyTimer : Watch
+    public class MyTimer : Watch, IAlterTime
     {
         private TextBlock tb;
         private Dispatcher dispatcher;
         private DispatcherTimer timer;
         private TimeSpan targetTime;
         private Stopwatch stopwatch;
+
+        private ComboBox cbHours;
+        private ComboBox cbMinutes;
+        private ComboBox cbSeconds;
 
         public TimeSpan TargetTime
         {
@@ -92,11 +97,36 @@ namespace Watch.Watches
             TimeSpan tempTimeSpan = TargetTime - stopwatch.Elapsed;
             tb.Text = String.Format("{0:00}:{1:00}:{2:00}", tempTimeSpan.Hours, tempTimeSpan.Minutes, tempTimeSpan.Seconds);
         }
-        /// <summary>
-        /// These three Alter methods takes in a parameter of time, and adds that to the target time
-        /// </summary>
-        public void AlterHours(int hours) { TargetTime = TargetTime.Add(new TimeSpan(hours, 0, 0)); UpdateTextBlock(); }
-        public void AlterMinutes(int minutes) { TargetTime = TargetTime.Add(new TimeSpan(0, minutes, 0)); UpdateTextBlock(); }
-        public void AlterSeconds(int seconds) { TargetTime = TargetTime.Add(new TimeSpan(0, 0, seconds)); UpdateTextBlock(); }
+
+        public void AddTime() 
+        { 
+            TargetTime = TargetTime.Add(new TimeSpan(cbHours.SelectedIndex, cbMinutes.SelectedIndex, cbSeconds.SelectedIndex)); 
+            cbHours.SelectedIndex = 0;
+            cbMinutes.SelectedIndex = 0;
+            cbSeconds.SelectedIndex = 0;
+            UpdateTextBlock();
+        }
+
+        public void SubtractTime()
+        {
+            TargetTime = TargetTime.Add(new TimeSpan(-cbHours.SelectedIndex, -cbMinutes.SelectedIndex, -cbSeconds.SelectedIndex));
+            cbHours.SelectedIndex = 0;
+            cbMinutes.SelectedIndex = 0;
+            cbSeconds.SelectedIndex = 0;
+            UpdateTextBlock();
+        }
+
+        public void Initialize(ComboBox cbHours, ComboBox cbMinutes, ComboBox cbSeconds)
+        {
+            this.cbHours = cbHours;
+            this.cbMinutes = cbMinutes;
+            this.cbSeconds = cbSeconds;
+
+            for (int i = 0; i < 25; i++) { cbHours.Items.Add(i); }
+            for (int i = 0; i < 60; i++){ cbMinutes.Items.Add(i); cbSeconds.Items.Add(i); }
+            cbHours.SelectedIndex = 0;
+            cbMinutes.SelectedIndex = 0;
+            cbSeconds.SelectedIndex = 0;
+        }
     }
 }

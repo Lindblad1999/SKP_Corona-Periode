@@ -55,7 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Interfaces\IAlterTime.cs" />
     <Compile Include="MyWatch.cs" />
+    <Compile Include="Watches\MyAlarm.cs" />
     <Compile Include="Watches\MyStopwatch.cs" />
     <Compile Include="Watches\MyTimer.cs" />
     <Compile Include="Watches\Watch.cs" />
@@ -98,8 +100,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

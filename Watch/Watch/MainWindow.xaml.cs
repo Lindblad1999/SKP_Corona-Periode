@@ -34,6 +34,7 @@ namespace Watch
             }, this.Dispatcher);
 
             mw = new MyWatch(this.Dispatcher, textBlockTimer);
+            mw.myTimer.Initialize(comboBoxTimerHours, comboBoxTimerMinutes, comboBoxTimerSeconds);
         }
 
         #region StopWatch Eventhandlers
@@ -54,7 +55,7 @@ namespace Watch
 
         private void btnLapStopwatch_Click(object sender, RoutedEventArgs e)
         {
-
+            mw.myStopwatch.Lap(listBoxStopwatchLaps);
         }
         #endregion
 
@@ -74,31 +75,15 @@ namespace Watch
             mw.myTimer.Reset();
         }
 
-        #region AddAndSubtractTimeButtons
-        private void btnTenHoursPlus_Click(object sender, RoutedEventArgs e) { mw.myTimer.AlterHours(10); }
+        private void btnTimerAddTime_Click(object sender, RoutedEventArgs e)
+        {
+            mw.myTimer.AddTime();
+        }
 
-        private void btnOneHoursPlus_Click(object sender, RoutedEventArgs e) { mw.myTimer.AlterHours(1); }
-
-        private void btnTenMinutesPlus_Click(object sender, RoutedEventArgs e) { mw.myTimer.AlterMinutes(10); }
-
-        private void btnOneMinutePlus_Click(object sender, RoutedEventArgs e) { mw.myTimer.AlterMinutes(1); }
-
-        private void btnTenSecondsPlus_Click(object sender, RoutedEventArgs e) { mw.myTimer.AlterSeconds(10); }
-
-        private void btnOneSecondPlus_Click(object sender, RoutedEventArgs e) { mw.myTimer.AlterSeconds(1); }
-
-        private void btnTenHoursMinus_Click(object sender, RoutedEventArgs e) { mw.myTimer.AlterHours(-10); }
-
-        private void btnOneHoursMinusPlus_Copy_Click(object sender, RoutedEventArgs e) { mw.myTimer.AlterHours(-1); }
-
-        private void btnTenMinutesMinus_Click(object sender, RoutedEventArgs e) { mw.myTimer.AlterMinutes(-10); }
-
-        private void btnOneMinuteMinus_Click(object sender, RoutedEventArgs e) { mw.myTimer.AlterMinutes(-1); }
-
-        private void btnTenSecondsMinus_Click(object sender, RoutedEventArgs e) { mw.myTimer.AlterSeconds(-10); }
-
-        private void btnOneSecondMinus_Click(object sender, RoutedEventArgs e) { mw.myTimer.AlterSeconds(-1); }
-        #endregion
+        private void btnTimerSubtractTime_Click(object sender, RoutedEventArgs e)
+        {
+            mw.myTimer.SubtractTime();
+        }
         #endregion
 
     }
