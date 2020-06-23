@@ -11,7 +11,6 @@ namespace Watch.Watches
 {
     public class MyStopwatch : Watch
     {
-
         private DispatcherTimer dispatchStopwatch = new DispatcherTimer();
         private Stopwatch stopWatch = new Stopwatch();
         private string startTime = string.Empty;

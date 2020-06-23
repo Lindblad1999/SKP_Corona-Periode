@@ -84,6 +84,21 @@ namespace Watch
         {
             mw.myTimer.SubtractTime();
         }
+
+        private void btnCreateNew_Click(object sender, RoutedEventArgs e)
+        {
+            mw.myTimer.New();
+        }
+
+        private void listBoxTimers_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            mw.myTimer.listBoxTimers_SelectionChanged();
+        }
+
+        private void btnRemoveTimer_Click(object sender, RoutedEventArgs e)
+        {
+            mw.myTimer.RemoveTimer();
+        }
         #endregion
 
     }

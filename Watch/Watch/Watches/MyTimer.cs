@@ -27,6 +27,8 @@ namespace Watch.Watches
 
         private List<Timer> timers;
 
+        private int currentSelection;
+
         public MyTimer(Dispatcher dispatcher, TextBlock tb, ListBox listBoxTimers)
         {
             this.dispatcher = dispatcher;
@@ -40,8 +42,20 @@ namespace Watch.Watches
         /// </summary>
         public override void Reset()
         {
-            stopwatch.Restart();
-            targetTime = new TimeSpan(0, 0, 0);
+            if (listBoxTimers.SelectedIndex != -1)
+            {
+                timers[listBoxTimers.SelectedIndex].CurrentTime.Restart();
+                timers[listBoxTimers.SelectedIndex].TargetTime = new TimeSpan(0, 0, 0);
+            }
+
+            UpdateListBox();
+        }
+
+        public void New()
+        {
+            timers.Add(new Timer());
+
+            UpdateListBox();
         }
 
         /// <summary>
@@ -50,7 +64,10 @@ namespace Watch.Watches
         /// <param name="tb"></param>
         public override void Start(TextBlock tb)
         {
-            stopwatch.Start();
+            if (listBoxTimers.SelectedIndex != -1)
+            {
+                timers[listBoxTimers.SelectedIndex].CurrentTime.Start();
+            }
             timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
               {
                   UpdateTextBlock();
@@ -66,11 +83,24 @@ namespace Watch.Watches
         void timer_Tick(object sender, EventArgs e)
         {
             ///Checks if the stopwatch has reached the targetTime, if so it stops and clears the elapsed time on the stopwatch
-            if (TargetTime <= stopwatch.Elapsed)
+            foreach (Timer timer in timers)
             {
-                stopwatch.Reset();
-                targetTime = new TimeSpan(0, 0, 0);
-                UpdateTextBlock();
+                if (timer.TargetTime <= timer.CurrentTime.Elapsed)
+                {
+                    timer.CurrentTime.Reset();
+                    timer.TargetTime = new TimeSpan(0, 0, 0);
+                    UpdateTextBlock();
+                }
+            }
+            UpdateListBox();
+        }
+
+        internal void RemoveTimer()
+        {
+            if (listBoxTimers.SelectedIndex != -1)
+            {
+                timers.RemoveAt(listBoxTimers.SelectedIndex);
+                listBoxTimers.SelectedIndex = -1;
             }
         }
 
@@ -79,7 +109,16 @@ namespace Watch.Watches
         /// </summary>
         public override void Stop()
         {
-            stopwatch.Stop();
+            if (listBoxTimers.SelectedIndex != -1)
+                timers[listBoxTimers.SelectedIndex].CurrentTime.Stop();
+        }
+
+        internal void listBoxTimers_SelectionChanged()
+        {
+            if (listBoxTimers.SelectedIndex != -1)
+                currentSelection = listBoxTimers.SelectedIndex;
+            listBoxTimers.SelectedIndex = currentSelection;
+
         }
 
         /// <summary>
@@ -88,26 +127,35 @@ namespace Watch.Watches
         /// 
         private void UpdateTextBlock()
         {
-            TimeSpan tempTimeSpan = TargetTime - stopwatch.Elapsed;
-            tb.Text = String.Format("{0:00}:{1:00}:{2:00}", tempTimeSpan.Hours, tempTimeSpan.Minutes, tempTimeSpan.Seconds);
+            if (listBoxTimers.SelectedIndex != -1)
+            {
+                TimeSpan tempTimeSpan = timers[listBoxTimers.SelectedIndex].TargetTime - timers[listBoxTimers.SelectedIndex].CurrentTime.Elapsed;
+                tb.Text = String.Format("{0:00}:{1:00}:{2:00}", tempTimeSpan.Hours, tempTimeSpan.Minutes, tempTimeSpan.Seconds);
+            }
         }
 
-        public void AddTime() 
-        { 
-            TargetTime = TargetTime.Add(new TimeSpan(cbHours.SelectedIndex, cbMinutes.SelectedIndex, cbSeconds.SelectedIndex)); 
-            cbHours.SelectedIndex = 0;
-            cbMinutes.SelectedIndex = 0;
-            cbSeconds.SelectedIndex = 0;
-            UpdateTextBlock();
+        public void AddTime()
+        {
+            if (listBoxTimers.SelectedIndex != -1)
+            {
+                timers[listBoxTimers.SelectedIndex].TargetTime = timers[listBoxTimers.SelectedIndex].TargetTime.Add(new TimeSpan(cbHours.SelectedIndex, cbMinutes.SelectedIndex, cbSeconds.SelectedIndex));
+                cbHours.SelectedIndex = 0;
+                cbMinutes.SelectedIndex = 0;
+                cbSeconds.SelectedIndex = 0;
+                UpdateTextBlock();
+            }
         }
 
         public void SubtractTime()
         {
-            TargetTime = TargetTime.Add(new TimeSpan(-cbHours.SelectedIndex, -cbMinutes.SelectedIndex, -cbSeconds.SelectedIndex));
-            cbHours.SelectedIndex = 0;
-            cbMinutes.SelectedIndex = 0;
-            cbSeconds.SelectedIndex = 0;
-            UpdateTextBlock();
+            if (listBoxTimers.SelectedIndex != -1)
+            {
+                timers[listBoxTimers.SelectedIndex].TargetTime = timers[listBoxTimers.SelectedIndex].TargetTime.Add(new TimeSpan(-cbHours.SelectedIndex, -cbMinutes.SelectedIndex, -cbSeconds.SelectedIndex));
+                cbHours.SelectedIndex = 0;
+                cbMinutes.SelectedIndex = 0;
+                cbSeconds.SelectedIndex = 0;
+                UpdateTextBlock();
+            }
         }
 
         public void Initialize(ComboBox cbHours, ComboBox cbMinutes, ComboBox cbSeconds)
@@ -117,10 +165,20 @@ namespace Watch.Watches
             this.cbSeconds = cbSeconds;
 
             for (int i = 0; i < 25; i++) { cbHours.Items.Add(i); }
-            for (int i = 0; i < 60; i++){ cbMinutes.Items.Add(i); cbSeconds.Items.Add(i); }
+            for (int i = 0; i < 60; i++) { cbMinutes.Items.Add(i); cbSeconds.Items.Add(i); }
             cbHours.SelectedIndex = 0;
             cbMinutes.SelectedIndex = 0;
             cbSeconds.SelectedIndex = 0;
+        }
+
+        private void UpdateListBox()
+        {
+            listBoxTimers.Items.Clear();
+            foreach (Timer timer in timers)
+            {
+                listBoxTimers.Items.Add(String.Format("{0:00}:{1:00}:{2:00}", (timer.TargetTime - timer.CurrentTime.Elapsed).Hours,
+                    (timer.TargetTime - timer.CurrentTime.Elapsed).Minutes, (timer.TargetTime - timer.CurrentTime.Elapsed).Seconds));
+            }
         }
     }
 }
