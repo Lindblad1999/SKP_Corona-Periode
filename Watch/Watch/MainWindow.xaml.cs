@@ -106,10 +106,9 @@ namespace Watch
         #endregion
 
         #region Alarm Eventhandlers
-        private void btnNewAlarm_Click(object sender, RoutedEventArgs e)
-        {
-            ma.CreateNew();
-        }
+        private void btnNewAlarm_Click(object sender, RoutedEventArgs e) => ma.CreateNew();
+
+        
 
         #endregion
 

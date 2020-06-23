@@ -68,7 +68,7 @@
             <TabItem x:Name="tebItemAlarm" Header="Alarm">
                 <Grid Background="#FFE5E5E5" RenderTransformOrigin="0.488,0.5" Margin="0,-1,0,1">
                     <ListBox x:Name="listBoxAlarms" HorizontalAlignment="Left" Height="322" Margin="10,10,0,0" VerticalAlignment="Top" Width="238"/>
-                    <TextBox x:Name="txtBoxAlarmName" HorizontalAlignment="Left" Height="23" Margin="445,138,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="txtBoxAlarmName" HorizontalAlignment="Left" Height="23" Margin="445,149,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="120"/>
                     <TextBox x:Name="textBoxAlarmMessage" HorizontalAlignment="Left" Height="77" Margin="445,210,0,0" TextWrapping="Wrap" Text="Message" VerticalAlignment="Top" Width="214"/>
                     <Button x:Name="btnNewAlarm" Content="Create New" HorizontalAlignment="Left" Margin="445,292,0,0" VerticalAlignment="Top" Width="84" Height="40" Click="btnNewAlarm_Click"/>
                     <Button x:Name="btnSaveChanges" Content="Save" HorizontalAlignment="Left" Margin="534,292,0,0" VerticalAlignment="Top" Width="60" Height="40"/>
