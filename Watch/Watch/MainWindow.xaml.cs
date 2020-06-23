@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using Watch.Watches;
 
 namespace Watch
 {
@@ -22,7 +23,9 @@ namespace Watch
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MyWatch mw;
+        private MyWatch mw;
+        private MyAlarm ma;
+
 
         public MainWindow()
         {
@@ -33,6 +36,7 @@ namespace Watch
                 this.textBlockDate.Text = String.Format("{0:00}/{1:00}-{2:0000}", DateTime.Now.Day, DateTime.Now.Month, DateTime.Now.Year);
             }, this.Dispatcher);
 
+            ma = new MyAlarm(txtBoxAlarmName, datePickerAlarm, textBoxAlarmMessage, listBoxAlarms, comboBoxAlarmHours, comboBoxAlarmMinutes);
             mw = new MyWatch(this.Dispatcher, textBlockTimer, listBoxTimers);
             mw.myTimer.Initialize(comboBoxTimerHours, comboBoxTimerMinutes, comboBoxTimerSeconds);
         }
@@ -99,6 +103,14 @@ namespace Watch
         {
             mw.myTimer.RemoveTimer();
         }
+        #endregion
+
+        #region Alarm Eventhandlers
+        private void btnNewAlarm_Click(object sender, RoutedEventArgs e)
+        {
+            ma.CreateNew();
+        }
+
         #endregion
 
     }

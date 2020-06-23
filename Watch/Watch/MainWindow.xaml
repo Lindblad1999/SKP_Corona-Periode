@@ -68,21 +68,16 @@
             <TabItem x:Name="tebItemAlarm" Header="Alarm">
                 <Grid Background="#FFE5E5E5" RenderTransformOrigin="0.488,0.5" Margin="0,-1,0,1">
                     <ListBox x:Name="listBoxAlarms" HorizontalAlignment="Left" Height="322" Margin="10,10,0,0" VerticalAlignment="Top" Width="238"/>
-                    <TextBox x:Name="txtBoxAlarmName" HorizontalAlignment="Left" Height="23" Margin="444,119,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="120"/>
-                    <CheckBox x:Name="checkBoxRepeat" Content="Repeat?" HorizontalAlignment="Left" Margin="444,147,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="checkBoxTuesday" Content="T" HorizontalAlignment="Left" Margin="480,167,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="checkBoxWednesday" Content="W" HorizontalAlignment="Left" Margin="510,167,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="checkBoxThursday" Content="T" HorizontalAlignment="Left" Margin="545,167,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="checkBoxFriday" Content="F" HorizontalAlignment="Left" Margin="575,167,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="checkBoxSaturday" Content="S" HorizontalAlignment="Left" Margin="604,167,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="checkBoxSunday" Content="S" HorizontalAlignment="Left" Margin="634,167,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="textBoxAlarmMessage" HorizontalAlignment="Left" Height="100" Margin="445,187,0,0" TextWrapping="Wrap" Text="Message" VerticalAlignment="Top" Width="214"/>
-                    <Button x:Name="btnNewAlarm" Content="Create New" HorizontalAlignment="Left" Margin="445,292,0,0" VerticalAlignment="Top" Width="84" Height="40"/>
+                    <TextBox x:Name="txtBoxAlarmName" HorizontalAlignment="Left" Height="23" Margin="445,138,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="textBoxAlarmMessage" HorizontalAlignment="Left" Height="77" Margin="445,210,0,0" TextWrapping="Wrap" Text="Message" VerticalAlignment="Top" Width="214"/>
+                    <Button x:Name="btnNewAlarm" Content="Create New" HorizontalAlignment="Left" Margin="445,292,0,0" VerticalAlignment="Top" Width="84" Height="40" Click="btnNewAlarm_Click"/>
                     <Button x:Name="btnSaveChanges" Content="Save" HorizontalAlignment="Left" Margin="534,292,0,0" VerticalAlignment="Top" Width="60" Height="40"/>
                     <Button x:Name="btnAlarmCancel" Content="Cancel" HorizontalAlignment="Left" Margin="599,292,0,0" VerticalAlignment="Top" Width="60" Height="40"/>
                     <RadioButton x:Name="radioBtnOn" Content="ON" HorizontalAlignment="Left" Margin="10,337,0,0" VerticalAlignment="Top"/>
                     <RadioButton x:Name="radioBtnOff" Content="OFF" HorizontalAlignment="Left" Margin="53,337,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="checkBoxMonday" Content="M" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="444,167,0,0"/>
+                    <DatePicker x:Name="datePickerAlarm" HorizontalAlignment="Left" Margin="445,182,0,0" VerticalAlignment="Top"/>
+                    <ComboBox x:Name="comboBoxAlarmHours" HorizontalAlignment="Left" Margin="561,183,0,0" VerticalAlignment="Top" Width="47"/>
+                    <ComboBox x:Name="comboBoxAlarmMinutes" HorizontalAlignment="Left" Margin="613,183,0,0" VerticalAlignment="Top" Width="46"/>
 
                 </Grid>
             </TabItem>

@@ -61,6 +61,7 @@
     <Compile Include="Watches\MyStopwatch.cs" />
     <Compile Include="Watches\MyTimer.cs" />
     <Compile Include="Watches\Watch.cs" />
+    <Compile Include="WatchObjects\Alarm.cs" />
     <Compile Include="WatchObjects\Timer.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
