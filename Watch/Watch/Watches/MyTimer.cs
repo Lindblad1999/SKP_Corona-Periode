@@ -51,6 +51,10 @@ namespace Watch.Watches
             UpdateListBox();
         }
 
+        /// <summary>
+        /// Method is called when the "Create New" Button has been clicked.
+        /// It creates a new instance of Timer, and adds it to the timers List
+        /// </summary>
         public void New()
         {
             timers.Add(new Timer());

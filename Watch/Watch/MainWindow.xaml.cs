@@ -25,7 +25,7 @@ namespace Watch
     {
         private MyWatch mw;
         private MyAlarm ma;
-
+        private VisualRepWatch vrw;
 
         public MainWindow()
         {
@@ -36,9 +36,11 @@ namespace Watch
                 this.textBlockDate.Text = String.Format("{0:00}/{1:00}-{2:0000}", DateTime.Now.Day, DateTime.Now.Month, DateTime.Now.Year);
             }, this.Dispatcher);
 
-            ma = new MyAlarm(txtBoxAlarmName, datePickerAlarm, textBoxAlarmMessage, listBoxAlarms, comboBoxAlarmHours, comboBoxAlarmMinutes);
+            ma = new MyAlarm(txtBoxAlarmName, datePickerAlarm, textBoxAlarmMessage, listBoxAlarms, comboBoxAlarmHours, comboBoxAlarmMinutes, radioBtnOn, radioBtnOff);
             mw = new MyWatch(this.Dispatcher, textBlockTimer, listBoxTimers);
             mw.myTimer.Initialize(comboBoxTimerHours, comboBoxTimerMinutes, comboBoxTimerSeconds);
+
+            vrw = new VisualRepWatch(canvas);
         }
 
         #region StopWatch Eventhandlers
@@ -108,8 +110,13 @@ namespace Watch
         #region Alarm Eventhandlers
         private void btnNewAlarm_Click(object sender, RoutedEventArgs e) => ma.CreateNew();
 
-        
+        private void listBoxAlarms_SelectionChanged(object sender, SelectionChangedEventArgs e) => ma.listBoxAlarms_SelectionChanged();
 
+        private void radioBtnOff_Checked(object sender, RoutedEventArgs e) => ma.RadioBtnSelectonChanged();
+
+        private void btnAlarmRemove_Click(object sender, RoutedEventArgs e) => ma.Remove();
+
+        private void btnSaveChanges_Click(object sender, RoutedEventArgs e) => ma.SaveChanges();
         #endregion
 
     }

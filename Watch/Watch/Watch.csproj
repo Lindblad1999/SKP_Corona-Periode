@@ -60,6 +60,7 @@
     <Compile Include="Watches\MyAlarm.cs" />
     <Compile Include="Watches\MyStopwatch.cs" />
     <Compile Include="Watches\MyTimer.cs" />
+    <Compile Include="Watches\VisualRepWatch.cs" />
     <Compile Include="Watches\Watch.cs" />
     <Compile Include="WatchObjects\Alarm.cs" />
     <Compile Include="WatchObjects\Timer.cs" />

@@ -18,7 +18,7 @@ namespace Watch.WatchObjects
             get => this.targetTime;
             set
             {
-                if (value.Value > DateTime.Now)
+                if (value.Value.Date >= DateTime.Now.Date)
                     this.targetTime = value;
                 else
                     throw new ArgumentException("Date can't be below the current date");
@@ -30,14 +30,19 @@ namespace Watch.WatchObjects
 
         public Alarm(string name, string message, DateTime? date, int hours, int minutes)
         {
+            Change(name, message, date, hours, minutes);
+
+            isOn = true;
+        }
+
+        public void Change(string name, string message, DateTime? date, int hours, int minutes)
+        {
             this.Name = name;
             this.Message = message;
 
             this.TargetTime = date;
             TargetTime = TargetTime.Value.AddHours(hours);
             TargetTime = TargetTime.Value.AddMinutes(minutes);
-
-            isOn = true;
         }
     }
 }
