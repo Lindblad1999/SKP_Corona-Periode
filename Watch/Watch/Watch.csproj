@@ -56,7 +56,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Interfaces\IAlterTime.cs" />
-    <Compile Include="MyWatch.cs" />
+    <Compile Include="Interfaces\IUpdate.cs" />
     <Compile Include="Watches\MyAlarm.cs" />
     <Compile Include="Watches\MyStopwatch.cs" />
     <Compile Include="Watches\MyTimer.cs" />

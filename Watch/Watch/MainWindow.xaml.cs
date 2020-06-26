@@ -23,91 +23,114 @@ namespace Watch
     /// </summary>
     public partial class MainWindow : Window
     {
-        private MyWatch mw;
         private MyAlarm ma;
+        private MyStopwatch msw;
+        private MyTimer mt;
         private VisualRepWatch vrw;
 
         public MainWindow()
         {
             InitializeComponent();
+            ///A new DispatcherTimer is created, which updates the current Time and date, displayed on the main screen
             DispatcherTimer timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
             {
                 this.dateText.Text = DateTime.Now.ToString("HH:mm:ss");
                 this.textBlockDate.Text = String.Format("{0:00}/{1:00}-{2:0000}", DateTime.Now.Day, DateTime.Now.Month, DateTime.Now.Year);
             }, this.Dispatcher);
 
+            ///A new instance of the MyAlarm class is created, and all the tools it needs is passed as arguments.
             ma = new MyAlarm(txtBoxAlarmName, datePickerAlarm, textBoxAlarmMessage, listBoxAlarms, comboBoxAlarmHours, comboBoxAlarmMinutes, radioBtnOn, radioBtnOff);
-            mw = new MyWatch(this.Dispatcher, textBlockTimer, listBoxTimers);
-            mw.myTimer.Initialize(comboBoxTimerHours, comboBoxTimerMinutes, comboBoxTimerSeconds);
+            ///A new instance if the MyTimer class is created, and all the tools it needs is passed as arguments.
+            mt = new MyTimer(Dispatcher, textBlockTimer, listBoxTimers);
+            ///A new instance of the MyStopwatch class is created.
+            msw = new MyStopwatch();
+            ///The Timers intitialize method is called
+            mt.Initialize(comboBoxTimerHours, comboBoxTimerMinutes, comboBoxTimerSeconds);
 
+            ///A new instance of the VisualRepWatch class is created
             vrw = new VisualRepWatch(canvas);
         }
 
         #region StopWatch Eventhandlers
+
+        /// <summary>
+        /// The eventhandlers in this region all call their respectice methods in the stopwatch class
+        /// </summary>
+
         private void btnStartStopwatch_Click(object sender, RoutedEventArgs e)
         {
-            mw.myStopwatch.Start(textBlockStopwatch);
+            msw.Start(textBlockStopwatch);
         }
 
         private void btnStopStopWatch_Click(object sender, RoutedEventArgs e)
         {
-            mw.myStopwatch.Stop();
+            msw.Stop();
         }
 
         private void btnResetStopWatch_Click(object sender, RoutedEventArgs e)
         {
-            mw.myStopwatch.Reset();
+            msw.Reset();
         }
 
         private void btnLapStopwatch_Click(object sender, RoutedEventArgs e)
         {
-            mw.myStopwatch.Lap(listBoxStopwatchLaps);
+            msw.Lap(listBoxStopwatchLaps);
         }
         #endregion
 
         #region Timer EventHandlers
+
+        /// <summary>
+        /// The eventhandlers in this region all call their respective methods in Timer class
+        /// </summary>
+
         private void btnStartTimer_Click(object sender, RoutedEventArgs e)
         {
-            mw.myTimer.Start(textBlockTimer);
+            mt.Start(textBlockTimer);
         }
 
         private void btnStopTimer_Click(object sender, RoutedEventArgs e)
         {
-            mw.myTimer.Stop();
+            mt.Stop();
         }
 
         private void btnResetTimer_Click(object sender, RoutedEventArgs e)
         {
-            mw.myTimer.Reset();
+            mt.Reset();
         }
 
         private void btnTimerAddTime_Click(object sender, RoutedEventArgs e)
         {
-            mw.myTimer.AddTime();
+            mt.AddTime();
         }
 
         private void btnTimerSubtractTime_Click(object sender, RoutedEventArgs e)
         {
-            mw.myTimer.SubtractTime();
+            mt.SubtractTime();
         }
 
         private void btnCreateNew_Click(object sender, RoutedEventArgs e)
         {
-            mw.myTimer.New();
+            mt.New();
         }
 
         private void listBoxTimers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            mw.myTimer.listBoxTimers_SelectionChanged();
+            mt.listBoxTimers_SelectionChanged();
         }
 
         private void btnRemoveTimer_Click(object sender, RoutedEventArgs e)
         {
-            mw.myTimer.RemoveTimer();
+            mt.RemoveTimer();
         }
         #endregion
 
         #region Alarm Eventhandlers
+
+        /// <summary>
+        /// The Eventhandlers in this region all call their respective methods in the Alarm class
+        /// </summary>
+
         private void btnNewAlarm_Click(object sender, RoutedEventArgs e) => ma.CreateNew();
 
         private void listBoxAlarms_SelectionChanged(object sender, SelectionChangedEventArgs e) => ma.listBoxAlarms_SelectionChanged();
